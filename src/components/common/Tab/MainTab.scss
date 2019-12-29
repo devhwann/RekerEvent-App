@@ -1,0 +1,19 @@
+.tab-wrap {
+  button {
+    border: 0;
+    background: none;
+    font-size: 2rem;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+    &:hover {
+      transition: 1s;
+      background: $oc-gray-2;
+    }
+  } 
+
+  .tab-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+}
