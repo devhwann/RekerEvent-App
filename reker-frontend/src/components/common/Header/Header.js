@@ -1,27 +1,30 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import classNames from "classnames/bind";
+import styles from './Header.scss';
 import Modal from 'react-bootstrap/Modal';
-// import ModalDialog from 'react-bootstrap/ModalDialog';
-// import ModalHeader from 'react-bootstrap/ModalHeader';
-// import ModalTitle from 'react-bootstrap/ModalTitle';
-
 import { Button } from 'react-bootstrap';
-const WrapHeader = styled.div`
-    position: fixed;
-    top: 0;
-    margin-top: 1rem;
-    right: 6rem;
-`
 
-const Header = () => {
+
+
+const cx = classNames.bind(styles);
+
+const textMap = {
+  register: '회원가입',
+  login: '로그인'
+}
+
+const Header = (type, onsubmit) => {
+  const text = textMap[type];
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
-    <WrapHeader>
+    <div classNames="cx">
     <Button variant="primary" onClick={handleShow}>
         로그인
       </Button>
@@ -34,22 +37,34 @@ const Header = () => {
       centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>회원가입</Modal.Title>
+          <Modal.Title>{text}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
+          <form onsubmit={onsubmit}>
+          <input type="text" name="username" value="" />
+          <input type="text" name="password" value="" />
+          {type === 'register' && (
+            <input type="text" name="passwordConfirm" />
+          )}
+          </form>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+        {type === 'login' ? (
+          <Link to="/register">회원가입</Link>
+        ) : (
+          <Link to="/login">로그인</Link>
+        )}
+          {/* <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Save Changes
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
-    </WrapHeader>
+    </div>
   );
 };
 
