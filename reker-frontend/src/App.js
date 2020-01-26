@@ -10,7 +10,7 @@ const App = () => {
     <>
       <Route component={MainPage} path="/" exact />
       <Route component={LoginPage} path="/login" />
-      <Route component={RegisterPage} path="/register" />
+      <Route component={RegisterPage} path="/register"/>
     </>
   );
 };

@@ -23,44 +23,7 @@ const Header = (type, onsubmit) => {
 
   return (
     <div classNames="cx">
-      <Button variant="primary" onClick={handleShow}>
-        로그인
-      </Button>
-      <Button variant="primary" onClick={handleShow}>
-        회원가입
-      </Button>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>{text}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* <form onsubmit={onsubmit}> */}
-          아이디<input type="text" name="username" value="" />
-          비밀번호<input type="text" name="password" value="" />
-          {type === 'register' && <input type="text" name="passwordConfirm" />}
-          {/* </form> */}
-          Link
-        </Modal.Body>
-        <Modal.Footer>
-          {/* {type === 'login' ? (
-            <Link to="/register">회원가입</Link>
-          ) : (
-            <Link to="/login">로그인</Link>
-          )}
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
-        </Modal.Footer>
-      </Modal>
+      
     </div>
   );
 };
