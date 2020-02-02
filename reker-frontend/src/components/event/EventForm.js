@@ -56,9 +56,7 @@ const ButtonWithMarginTop = styled(Button)`
 `;
 
 const textMap = {
-  login: '로그인',
-  register: '회원가입',
-  event: '사전등록'
+  event: '사전등록',
 };
 
 /**
@@ -78,41 +76,43 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
       <h3>{text}</h3>
       <form onSubmit={onSubmit}>
         <StyledInput
-          autoComplete="username"
-          name="username"
-          placeholder="아이디"
+          autoComplete="name"
+          name="name"
+          placeholder="이름"
           onChange={onChange}
-          value={form.username}
+          value={form.name}
         />
         <StyledInput
-        autoComplete="new-password"
-        name="password"
-        placeholder="비밀번호"
-        type="password"
-        onChange={onChange}
-        value={form.password}
+          autoComplete="birthday"
+          name="birthday"
+          placeholder="생년월일"
+          type="birthday"
+          onChange={onChange}
+          value={form.birthday}
         />
-        {type === 'register' && (
-          <StyledInput
-            autoComplete="new-password"
-            name="passwordConfirm"
-            placeholder="비밀번호 확인"
-            type="password"
-            onChange={onChange}
-            value={form.passwordConfirm}
-          />
-        )}        
+        <StyledInput
+          autoComplete="phone"
+          name="phone"
+          placeholder="휴대폰"
+          type="phone"
+          onChange={onChange}
+          value={form.phone}
+        />
+        <StyledInput
+          autoComplete="userId"
+          name="userId"
+          placeholder="추천인아이디"
+          type="userId"
+          onChange={onChange}
+          value={form.userId}
+        />
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
           {text}
         </ButtonWithMarginTop>
       </form>
       <Footer>
-        {type === 'login' ? (
-          <Link to="/register">회원가입</Link>
-        ) : (
-          <Link to="/login">로그인</Link>
-        )}
+          <Link to="/register">회원가입</Link>        
       </Footer>
     </AuthFormBlock>
   );

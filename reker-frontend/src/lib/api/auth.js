@@ -8,6 +8,10 @@ export const login = ({ username, password }) =>
 export const register = ({ username, password }) =>
   client.post('/api/auth/register', { username, password });
 
+// 사전등록
+export const EventRegister = ({ name, birthday, phone, userId }) =>
+  client.post('/api/event/register', { name, birthday, phone, userId});
+
 // 로그인 상태 확인
 export const check = () => client.get('/api/auth/check');
 
