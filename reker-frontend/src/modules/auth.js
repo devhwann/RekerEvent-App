@@ -17,6 +17,10 @@ const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
   'auth/LOGIN'
 );
 
+const [ EVENTREGISTER, EVENTREGISTER_SUCCESS, EVENTREGISTER_FAILURE] = createRequestActionTypes(
+  'event/EVENTREGISTER'
+);
+
 export const changeField = createAction(
   CHANGE_FIELD,
   ({ form, key, value }) => ({
@@ -30,6 +34,12 @@ export const register = createAction(REGISTER, ({ username, password }) => ({
   username,
   password
 }));
+export const eventregister = createAction(EVENTREGISTER, ({ name, birthday, phnoe, userId }) => ({
+  name,
+  birthday,
+  phnoe,
+  userId
+}));
 export const login = createAction(LOGIN, ({ username, password }) => ({
   username,
   password
@@ -38,9 +48,11 @@ export const login = createAction(LOGIN, ({ username, password }) => ({
 // saga 생성
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
+const eventregisterSaga = createRequestSaga(EVENTREGISTER, authAPI.eventregister);
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
+  yield takeLatest(EVENTREGISTER, registerSaga);
 }
 
 const initialState = {
@@ -52,6 +64,12 @@ const initialState = {
   login: {
     username: '',
     password: ''
+  },
+  eventregister: {
+    name: '',
+    birthday: '',
+    phnoe: '',
+    userId: ''
   },
   auth: null,
   authError: null
@@ -93,5 +111,14 @@ const auth = handleActions(
   },
   initialState
 );
+
+const event = handleActions({
+  [INITIALIZE_FORM]: (state, { payload: form }) => ({
+    ...state,
+    [form]: initialState[form],
+    authError: null // 폼 전환 시 회원 인증 에러 초기화
+  }),
+
+}, initialState)
 
 export default auth;
