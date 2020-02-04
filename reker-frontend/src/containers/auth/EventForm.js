@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, register } from '../../modules/auth';
-import AuthForm from '../../components/event/EventForm';
-import { check } from '../../modules/user';
+import EventAuthForm from '../../components/event/EventAuthForm';
+// import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
 const EventForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
-    form: auth.EventRegister,
+    form: auth.eventregister,
     auth: auth.auth,
     authError: auth.authError,
     user: user.user,
   }));
+  
   // 인풋 변경 이벤트 핸들러
   const onChange = e => {
     const { value, name } = e.target;
@@ -61,7 +62,7 @@ const EventForm = ({ history }) => {
     if (auth) {
       console.log('회원가입 성공');
       console.log(auth);
-      dispatch(check());
+      // dispatch(check());
     }
   }, [auth, authError, dispatch]);
 
@@ -78,7 +79,7 @@ const EventForm = ({ history }) => {
   }, [history, user]);
 
   return (
-    <EventForm
+    <EventAuthForm
       type="event"
       form={form}
       onChange={onChange}

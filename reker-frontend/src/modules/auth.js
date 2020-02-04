@@ -52,7 +52,7 @@ const eventregisterSaga = createRequestSaga(EVENTREGISTER, authAPI.eventregister
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
-  yield takeLatest(EVENTREGISTER, registerSaga);
+  yield takeLatest(EVENTREGISTER, eventregisterSaga);
 }
 
 const initialState = {
@@ -68,7 +68,7 @@ const initialState = {
   eventregister: {
     name: '',
     birthday: '',
-    phnoe: '',
+    phone: '',
     userId: ''
   },
   auth: null,
@@ -117,6 +117,22 @@ const event = handleActions({
     ...state,
     [form]: initialState[form],
     authError: null // 폼 전환 시 회원 인증 에러 초기화
+  }),
+  [CHANGE_FIELD]: (state, { payload: { form, key, value } }) =>
+      produce(state, draft => {
+        draft[form][key] = value; // 예: state.register.username을 바꾼다
+      }),
+
+  // 회원가입 성공
+  [EVENTREGISTER_SUCCESS]: (state, { payload: auth }) => ({
+    ...state,
+    authError: null,
+    auth
+  }),
+  // 회원가입 실패
+  [EVENTREGISTER_FAILURE]: (state, { payload: error }) => ({
+    ...state,
+    authError: error
   }),
 
 }, initialState)
