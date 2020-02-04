@@ -9,7 +9,7 @@ import Event from '../../models/event';
   }
 */
 
-export const register = async ctx => {
+export const eventregister = async ctx => {
   // Request Body 검증하기
   const schema = Joi.object().keys({
     name: Joi.string()

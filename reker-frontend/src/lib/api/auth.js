@@ -10,7 +10,7 @@ export const register = ({ username, password }) =>
 
 // 사전등록
 export const eventregister = ({ name, birthday, phone, userId }) =>
-  client.post('/api/event/register', { name, birthday, phone, userId});
+  client.post('/api/event/eventregister', { name, birthday, phone, userId});
 
 // 로그인 상태 확인
 export const check = () => client.get('/api/auth/check');

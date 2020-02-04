@@ -3,7 +3,7 @@ import * as eventCtrl from './event.ctrl';
 
 const event = new Router();
 
-event.post('/register', eventCtrl.register);
+event.post('/eventregister', eventCtrl.eventregister);
 // auth.get('/check', authCtrl.check);
 
 

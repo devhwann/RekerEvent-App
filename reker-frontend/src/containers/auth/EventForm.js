@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeField, initializeForm, register } from '../../modules/auth';
+import { changeField, initializeForm, eventregister } from '../../modules/auth';
 import EventAuthForm from '../../components/event/EventAuthForm';
 // import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
@@ -20,7 +20,7 @@ const EventForm = ({ history }) => {
     const { value, name } = e.target;
     dispatch(
       changeField({
-        form: 'register',
+        form: 'eventregister',
         key: name,
         value,
       }),
@@ -37,12 +37,12 @@ const EventForm = ({ history }) => {
       return;
     }
     
-    dispatch(register({ name, birthday, phone, userId }));
+    dispatch(eventregister({ name, birthday, phone, userId }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
-    dispatch(initializeForm('register'));
+    dispatch(initializeForm('eventregister'));
   }, [dispatch]);
 
   // 회원가입 성공 / 실패 처리
@@ -54,13 +54,13 @@ const EventForm = ({ history }) => {
         return;
       }
       // 기타 이유
-      setError('회원가입 실패');
-      console.log('회원가입 실패');
+      setError('회원가2입 실패');
+      console.log('회원2가입 실패');
       return;
     }
 
     if (auth) {
-      console.log('회원가입 성공');
+      console.log('회원2가입 성공');
       console.log(auth);
       // dispatch(check());
     }
