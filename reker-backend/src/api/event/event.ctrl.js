@@ -18,10 +18,7 @@ export const eventregister = async ctx => {
       .max(10)
       .required(),
     birthday: Joi.string().required(),
-    phone: Joi.number()
-    .min(11)
-    .max(11)
-    .required(),
+    phone: Joi.number().required(),
     userId: Joi.string().required(),
   });
   const result = Joi.validate(ctx.request.body, schema);

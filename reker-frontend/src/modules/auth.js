@@ -21,7 +21,7 @@ const [
   EVENTREGISTER,
   EVENTREGISTER_SUCCESS,
   EVENTREGISTER_FAILURE,
-] = createRequestActionTypes('event/eventregister');
+] = createRequestActionTypes('event/EVENTREGISTER');
 
 export const changeField = createAction(
   CHANGE_FIELD,
@@ -38,10 +38,10 @@ export const register = createAction(REGISTER, ({ username, password }) => ({
 }));
 export const eventregister = createAction(
   EVENTREGISTER,
-  ({ name, birthday, phnoe, userId }) => ({
+  ({ name, birthday, phone, userId }) => ({
     name,
     birthday,
-    phnoe,
+    phone,
     userId,
   }),
 );
@@ -113,6 +113,16 @@ const auth = handleActions(
     }),
     // 로그인 실패
     [LOGIN_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      authError: error,
+    }),
+    [EVENTREGISTER_SUCCESS]: (state, { payload: auth }) => ({
+      ...state,
+      authError: null,
+      auth,
+    }),
+    // 회원가입 실패
+    [EVENTREGISTER_FAILURE]: (state, { payload: error }) => ({
       ...state,
       authError: error,
     }),
