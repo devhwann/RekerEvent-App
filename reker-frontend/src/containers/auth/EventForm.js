@@ -6,9 +6,9 @@ import EventAuthForm from '../../components/event/EventAuthForm';
 import { withRouter } from 'react-router-dom';
 
 const EventForm = ({ history }) => {
-  const [error, setError] = useState(null);
+  const [error, setError, setSuccess] = useState(null);
   const dispatch = useDispatch();
-  const { form, auth, event, authError, user } = useSelector(({ auth, user }) => ({
+  const { form, auth,  authError, user } = useSelector(({ auth, user }) => ({
     form: auth.eventregister,
     auth: auth.auth,
     authError: auth.authError,
@@ -60,7 +60,8 @@ const EventForm = ({ history }) => {
     }
 
     if (auth) {
-      console.log('회원2가입 성공');
+      alert('사전등록 되었습니다.')
+      history.push('/'); // 홈 화면으로 이동
       console.log(auth);
       // dispatch(check());
     }
