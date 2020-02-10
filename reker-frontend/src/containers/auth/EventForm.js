@@ -6,7 +6,7 @@ import EventAuthForm from '../../components/event/EventAuthForm';
 import { withRouter } from 'react-router-dom';
 
 const EventForm = ({ history }) => {
-  const [error, setError, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const { form, auth,  authError, user } = useSelector(({ auth, user }) => ({
     form: auth.eventregister,
