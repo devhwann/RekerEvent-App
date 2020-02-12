@@ -20,7 +20,7 @@ const AuthFormBlock = styled.div`
 const Privacy = styled.div`  
 
   p {
-    height: 20px;
+    height: 50px;
     overflow: auto;
   }
 `
@@ -42,6 +42,11 @@ const StyledInput = styled.input`
   & + & {
     margin-top: 1rem;
   }
+`;
+
+const Checkinput = styled.input`
+  background: red;
+  border: 0;
 `;
 
 /**
@@ -116,10 +121,11 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
         />
         <Privacy>
           <h2>서비스 이용약관 
-            <input type="checkbox" checked=""/>
+            
           </h2>
 
           <p>
+
 
           정부혁신1번가 개인정보 처리방침
 정부혁신 공식 홈페이지 정부혁신1번가(이하 “정부혁신1번가”)는 정보주체의 동의, 「전자정부법」 및 「개인정보 보호법」 등 관련 법령상의 개인정보 보호 규정을 준수하여 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다. 이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우 웹사이트 공지사항을 통하여 공지할 것입니다.
@@ -296,8 +302,9 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
 
 
 
-          </p>
+          </p>          
         </Privacy>
+          <small>이용약관에 동의합니다. <Checkinput type="checkbox" checked="true"/></small> 
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
           {text}
