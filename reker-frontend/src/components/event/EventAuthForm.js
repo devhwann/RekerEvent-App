@@ -13,7 +13,7 @@ const AuthFormBlock = styled.div`
   h3 {
     margin: 0;
     color: ${palette.gray[8]};
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;  
   }
 `;
 
@@ -28,6 +28,7 @@ const Privacy = styled.div`
 /**
  * 스타일링된 input
  */
+
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
@@ -305,6 +306,7 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
           </p>          
         </Privacy>
           <small>이용약관에 동의합니다. <Checkinput type="checkbox" checked="true"/></small> 
+          <small>개인정보보호에 동의합니다. <Checkinput type="checkbox" checked="true"/></small> 
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
           {text}
