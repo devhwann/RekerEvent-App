@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 const Candidate = () => {
   return (
     <div className={cx('candidate')}>
-      근로자 내용
+      <img src="Candidate.png" alt="" width="65%"/>
     </div>
   );
 };

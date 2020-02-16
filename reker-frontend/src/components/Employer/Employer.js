@@ -4,7 +4,7 @@ import React from 'react';
 const Employer = () => {
   return (
     <div>
-      고용주 내용
+      <img src="Employer.png" alt="" width="65%"/>
     </div>
   );
 };

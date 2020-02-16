@@ -8,9 +8,7 @@ import Employer from '../../Employer/Employer';
 import EventSend from '../../EventSend/EventSend';
 
 const Text = styled.div`
-  padding-top: 1rem;
-  height: 300px;
-  text-align: left;
+  padding: 2rem 0rem 2rem;
 `;
 
 const MainTab = () => {
