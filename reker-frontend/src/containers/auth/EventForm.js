@@ -5,6 +5,32 @@ import EventAuthForm from '../../components/event/EventAuthForm';
 // import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
+
+
+const agree = () => {
+  let chkbox = document.getElementsByName('agree');
+  let chk = false;
+  for(var i=0 ; i<chkbox.length ; i++) {
+     if(chkbox[i].checked) {
+        chk = true; 
+      } else {
+       chk = false; 
+      } 
+    }
+
+    if (chk === false) 
+      alert('약관에 동의해주세요.')
+      return false;
+    
+  }
+
+
+const toggleChange = () => {
+  this.setState(prevState => ({
+    isJB: !prevState.isJB,
+  }));
+}
+
 const EventForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -24,19 +50,28 @@ const EventForm = ({ history }) => {
         key: name,
         value,
       }),
+      // this.setState({ checked: !this.state.checked })
     );
   };
+  
+
+  
+
+  
+
+
 
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    const { name, birthday, phone, userId } = form;
+    const { name, birthday, phone, userId  } = form;
     // 하나라도 비어있다면
-    if ([name, birthday, phone, userId].includes('')) {
+    if ([name, birthday, phone, userId ].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
+      agree();
       return;
     }
-    
+
     dispatch(eventregister({ name, birthday, phone, userId }));
   };
 
