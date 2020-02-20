@@ -55,12 +55,6 @@ const EventForm = ({ history }) => {
   };
   
 
-  
-
-  
-
-
-
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
