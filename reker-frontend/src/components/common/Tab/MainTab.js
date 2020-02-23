@@ -40,7 +40,7 @@ const MainTab = () => {
             <button>사전 등록</button>
           </Tab>
           <Tab>
-            <button>SNS홍보</button>
+            <button>SNS</button>
           </Tab>
         </div>
         <Panel>

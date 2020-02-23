@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 // import palette from '../../lib/styles/palette';
 import palette from '../../styles/palette';
 import Button from '../common/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 const EventButton = styled.button`
 border: none;
 border-radius: 4px;
@@ -21,11 +19,10 @@ width: 25% !important;
 margin-top: 1rem;
 
 `;
-const element = <FontAwesomeIcon icon={faCoffee} />
 
 
 
-const EventSend = (onSubmit) => {
+const EventSend = () => {
   return (
     <div>
       <p>
@@ -35,14 +32,13 @@ const EventSend = (onSubmit) => {
        <br/>
        <div>
           <br/>
-          - 포인트 1000 증가           <i class="fab fa-acquisitions-incorporated"></i>
-          <FontAwesomeIcon icon="smile" size="7x"/>
+          - 포인트 1000 증가           
           <br/>
           - 새로 구직활동시 새로운 매칭
           <br/>
           - 구인시 엄청난 혜택 증정
           </div>
-        <EventButton>
+        <EventButton to="/event" >
           사전등록 하러가기
         </EventButton>
        </p>
