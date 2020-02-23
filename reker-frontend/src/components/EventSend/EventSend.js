@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import palette from '../../styles/palette';
 import Button from '../common/Button';
 
-const EventButton = styled.button`
+const Ass = styled.a`
 border: none;
 border-radius: 4px;
 font-size: 1rem;
@@ -14,10 +14,9 @@ padding: 0.25rem 1rem;
 color: white;
 outline: none;
 cursor: pointer;
-  background: ${palette.cyan[5]} !important;
+background: ${palette.cyan[5]} !important;
 width: 25% !important;
 margin-top: 1rem;
-
 `;
 
 
@@ -38,9 +37,11 @@ const EventSend = () => {
           <br/>
           - 구인시 엄청난 혜택 증정
           </div>
-        <EventButton to="/event" >
+          <br/>
+
+        <Ass href="/event" class="eventBtn">
           사전등록 하러가기
-        </EventButton>
+        </Ass>
        </p>
     </div>
   );
