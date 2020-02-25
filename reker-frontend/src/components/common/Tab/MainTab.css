@@ -1,0 +1,16 @@
+.tab-wrap button {
+  border: 0;
+  background: none;
+  font-size: 1.6rem;
+  width: 50%;
+  cursor: pointer;
+}
+
+.tab-wrap .tab-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+/*# sourceMappingURL=MainTab.css.map */

@@ -38,7 +38,7 @@ const EventSend = () => {
           - 구인시 엄청난 혜택 증정
           </div>
           <br/>
-
+ {/* 그냥 cyan 추가하면 되는데 .. 왜 이렇게 했지 ?  */}
         <Ass href="/event" class="eventBtn">
           사전등록 하러가기
         </Ass>
