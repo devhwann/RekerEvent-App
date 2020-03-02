@@ -19,7 +19,7 @@ export const eventregister = async ctx => {
       .required(),
     birthday: Joi.string().required(),
     phone: Joi.number().required(),
-    userId: Joi.string().required(),
+    userId: Joi.string(),
   });
   const result = Joi.validate(ctx.request.body, schema);
   if (result.error) {
@@ -28,20 +28,26 @@ export const eventregister = async ctx => {
     return;
   }
 
-  const { name, birthday, phone, userId } = ctx.request.body;
-  // // username  이 이미 존재하는지 확인
-  // const exists = await Event.findByphone(phone);
-  // if (exists) {
-    //   ctx.status = 409; // Conflict
-    //   return;
-    // }
+  const { name, birthday, phone, userId, username } = ctx.request.body;
+  // // username  이 이미 존재하는지 확인  
+    try {
+      const exists = await User.findByUsername(username);
+    if (exists) {
+      console.log('계정이 있다요')
+    } else {
+      ctx.status = 409; // Conflict
+      return;
+    }
     const event = new Event({
       name,
       birthday,
       phone,
       userId
     });
-    try {
+
+    const User = new User({
+      username
+    })
     await event.save(); // 데이터베이스에 저장
     ctx.body = event;
   } catch (e) {
