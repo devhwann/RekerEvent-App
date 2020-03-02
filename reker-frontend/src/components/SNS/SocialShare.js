@@ -8,8 +8,8 @@ import { faTwitter, faFacebook, faInstagram} from '@fortawesome/free-brands-svg-
 const SocialShare = () => {
   return (
     <div>
-      <FontAwesomeIcon icon={faInstagram} link="https://www.instagram.com/reker_international/"/>
-          <FontAwesomeIcon icon={faFacebook} link="https://www.facenook.com/reker_international/"/>;
+      <FontAwesomeIcon icon={faInstagram} link="https://www.instagram.com/reker_international"/>
+          <FontAwesomeIcon icon={faFacebook} link="https://www.facenook.com/reker_international"/>;
       sad
     </div>
   );
