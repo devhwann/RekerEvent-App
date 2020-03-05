@@ -20,10 +20,9 @@ const Wrapper = styled(Responsive)`
   align-items: center;
   justify-content: space-between; /* 자식 엘리먼트 사이에 여백을 최대로 설정 */
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 800;
-    letter-spacing: 1px;
-    color: #0f43ff;
+    letter-spacing: 2px;
   }
   .right {
     display: flex;
@@ -35,7 +34,7 @@ const Wrapper = styled(Responsive)`
  * 헤더가 fixed로 되어 있기 때문에 페이지의 컨텐츠가 4rem 아래 나타나도록 해주는 컴포넌트
  */
 const Spacer = styled.div`
-  height: 3rem;
+  height: 4rem;
 `;
 
 const UserInfo = styled.div`
@@ -58,7 +57,7 @@ const Header = ({ user, onLogout }) => {
             </div>
           ) : (
             <div className="right">
-              <Button to="/login" cyan>로그인</Button>
+              <Button to="/login">로그인</Button>
             </div>
           )}
         </Wrapper>

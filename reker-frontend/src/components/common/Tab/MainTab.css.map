@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AACE,SADO,CACP,MAAM,CAAC;EACL,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,MAAM;EAEjB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,OAAO;CAId;;AAXL,AAcE,SAdO,CAcP,SAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;CAC9B",
-    "sources": [
-        "MainTab.scss"
-    ],
-    "names": [],
-    "file": "MainTab.css"
-}

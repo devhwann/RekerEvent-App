@@ -5,23 +5,6 @@ import AuthForm from '../../components/auth/AuthForm';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
-
-
-const agree = () => {
-  let chkbox = document.getElementsByName('agree');
-  let chk = false;
-  for(var i=0 ; i<chkbox.length ; i++) {
-     if(chkbox[i].checked) {
-        chk = true; 
-      } else {
-       chk = false; 
-      } 
-    }
-
-    if (chk === false) 
-      alert('약관에 동의해주세요.')
-      return false;
-  }
 const RegisterForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -50,10 +33,8 @@ const RegisterForm = ({ history }) => {
     // 하나라도 비어있다면
     if ([username, password, passwordConfirm].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
-      agree();      
       return;
     }
-    
     // 비밀번호가 일치하지 않는다면
     if (password !== passwordConfirm) {
       setError('비밀번호가 일치하지 않습니다.');
