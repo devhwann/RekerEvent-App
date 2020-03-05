@@ -38,11 +38,11 @@ export const register = createAction(REGISTER, ({ username, password }) => ({
 }));
 export const eventregister = createAction(
   EVENTREGISTER,
-  ({ name, birthday, phone, userId  }) => ({
+  ({ name, birthday, phone, username  }) => ({
     name,
     birthday,
     phone,
-    userId,
+    username,
     // check
   }),
 );
@@ -78,7 +78,7 @@ const initialState = {
     name: '',
     birthday: '',
     phone: '',
-    userId: '',
+    username: '',
     // check: ''
   },
   auth: null,
