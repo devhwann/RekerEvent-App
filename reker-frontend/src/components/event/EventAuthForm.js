@@ -117,12 +117,12 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
           value={form.phone}
         />
         <StyledInput
-          autoComplete="userId"
-          name="userId"
+          autoComplete="username"
+          name="username"
           placeholder="추천인아이디"
-          type="userId"
+          type="username"
           onChange={onChange}
-          value={form.userId}
+          value={form.username}
         />
         <Privacy>
           <h2>서비스 이용약관 

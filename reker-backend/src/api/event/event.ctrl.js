@@ -1,13 +1,8 @@
 import Joi from 'joi';
+import User from '../../models/user';
 import Event from '../../models/event';
 
-/*
-  POST /api/auth/register
-  {
-    username: 'velopert',
-    password: 'mypass123'
-  }
-*/
+
 
 export const eventregister = async ctx => {
   // Request Body 검증하기
@@ -19,7 +14,7 @@ export const eventregister = async ctx => {
       .required(),
     birthday: Joi.string().required(),
     phone: Joi.number().required(),
-    userId: Joi.string(),
+    username: Joi.string().allow('') // allow 공백 허용
   });
   const result = Joi.validate(ctx.request.body, schema);
   if (result.error) {
@@ -28,29 +23,44 @@ export const eventregister = async ctx => {
     return;
   }
 
-  const { name, birthday, phone, userId, username } = ctx.request.body;
+  const { name, birthday, phone, username  } = ctx.request.body;
   // // username  이 이미 존재하는지 확인  
     try {
       const exists = await User.findByUsername(username);
     if (exists) {
       console.log('계정이 있다요')
-    } else {
-      ctx.status = 409; // Conflict
-      return;
-    }
+    } 
+      if ([username].includes('')) {
+        ctx.status = 202; // Confirm
+         console.log("예외처리");
+      }else {
+         console.log("계정이 없습니다.")
+         ctx.status = 408; // Confirm
+         return;
+       }
+        // await event.save(); 
+         
+       
+      // if (username.includes('')) {
+      //   ctx.status = 200; // Confirm
+      //   console.log('?');
+      //   // await event.save(); 
+      // }
     const event = new Event({
       name,
       birthday,
       phone,
-      userId
+      username
     });
 
-    const User = new User({
-      username
-    })
+    const user = new User({
+      username,
+    });
+    ctx.body = user.serialize();
     await event.save(); // 데이터베이스에 저장
     ctx.body = event;
   } catch (e) {
+    console.log("asd")
     ctx.throw(500, e);
   }
 };

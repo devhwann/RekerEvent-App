@@ -4,7 +4,7 @@ const EventSchema = new Schema({
   name: String,
   birthday: String,
   phone: String, // 문자열로 이루어진 배열
-  userId: String,
+  username: String
 });
 
 const Event = mongoose.model('Event', EventSchema);

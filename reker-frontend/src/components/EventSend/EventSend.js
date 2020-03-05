@@ -29,17 +29,14 @@ const EventSend = () => {
        <br/>
        사전등록시 다음과 같은 혜택이 제공 됩니다.
        <br/>
-       <div>
           <br/>
           - 포인트 1000 증가           
           <br/>
           - 새로 구직활동시 새로운 매칭
           <br/>
           - 구인시 엄청난 혜택 증정
-          </div>
           <br/>
- {/* 그냥 cyan 추가하면 되는데 .. 왜 이렇게 했지 ?  */}
-        <Ass href="/event" class="eventBtn">
+        <Ass href="/event" >
           사전등록 하러가기
         </Ass>
        </p>
