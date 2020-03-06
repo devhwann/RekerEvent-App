@@ -36,12 +36,7 @@ const EventSend = () => {
           <br/>
           - 구인시 엄청난 혜택 증정
           <br/>
-<<<<<<< HEAD
         <Ass href="/event" >
-=======
-
-        <Ass href="/event" class="eventBtn">
->>>>>>> a93a305257a28cc9c30e3e268e4d2eb8cd4a8c6c
           사전등록 하러가기
         </Ass>
        </p>

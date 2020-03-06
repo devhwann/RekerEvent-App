@@ -64,7 +64,11 @@ const EventForm = ({ history }) => {
       setError('빈 칸을 모두 입력하세요.');
       agree();
       return;
-    } 
+    } else if ([username].includes('')) {
+      console.log('sc공2백');
+      alert('사전등록 되었습니다.')
+      history.push('/'); // 홈 화면으로 이동
+    }
 
     dispatch(eventregister({ name, birthday, phone, username }));
   };
@@ -74,40 +78,35 @@ const EventForm = ({ history }) => {
     dispatch(initializeForm('eventregister'));
   }, [dispatch]);
 
-  useEffect(() => {
-    if(authError) {
-      if (authError.response.status === 202) {
-        console.log('22d');
-      }
-    }
-}, [auth, dispatch]);
 
   // 회원가입 성공 / 실패 처리
   useEffect(() => {
+    const { username  } = form;
+    
     if (authError) {
-      // 계정명이 이미 존재할 때
+      // 계정명이 이미 존재하지 않을때
       if (authError.response.status === 408) {
+         if ([username].includes('')) {
+          console.log('sc공2백');
+          alert('사전등록 되었습니다.')
+          history.push('/'); // 홈 화면으로 이동
+        }
         setError('추천인 아이디가 존재하지 않습니다.');
         agree();
         return;
       } 
-       if (authError.response.status === 202) {
-         console.log('22d');
-}
       // 기타 이유
       setError('양식을 정확히 입력해주세요.');
       agree();
-      console.log('회원2가입 ');
+      console.log('양식을 정확히 입력해주세요 ');
       return;
     }
-
-    const sub = () => { 
       if (auth) {
       alert('사전등록 되었습니다.')
       history.push('/'); // 홈 화면으로 이동
       console.log(auth);
       // dispatch(check());
-    }}
+    }
   }, [auth, authError, dispatch]);
 
   // user 값이 잘 설정되었는지 확인

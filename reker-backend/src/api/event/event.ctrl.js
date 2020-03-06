@@ -27,35 +27,24 @@ export const eventregister = async ctx => {
   // // username  이 이미 존재하는지 확인  
     try {
       const exists = await User.findByUsername(username);
+        const event = new Event({
+          name,
+          birthday,
+          phone,
+          username
+        });
+    
+        const user = new User({
+          username,
+        });
     if (exists) {
       console.log('계정이 있다요')
-    } 
-      if ([username].includes('')) {
-        ctx.status = 202; // Confirm
-         console.log("예외처리");
-      }else {
+      // ctx.status = 200; // Confirm      
+    } else {
          console.log("계정이 없습니다.")
          ctx.status = 408; // Confirm
          return;
-       }
-        // await event.save(); 
-         
-       
-      // if (username.includes('')) {
-      //   ctx.status = 200; // Confirm
-      //   console.log('?');
-      //   // await event.save(); 
-      // }
-    const event = new Event({
-      name,
-      birthday,
-      phone,
-      username
-    });
-
-    const user = new User({
-      username,
-    });
+       }        
     ctx.body = user.serialize();
     await event.save(); // 데이터베이스에 저장
     ctx.body = event;
