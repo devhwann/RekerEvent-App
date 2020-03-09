@@ -8,7 +8,7 @@ import Employer from '../../Employer/Employer';
 import EventSend from '../../EventSend/EventSend';
 
 const Text = styled.div`
-  padding: 2rem 0rem 2rem;
+  padding: 1rem 0rem;
 `;
 
 const MainTab = () => {
