@@ -69,6 +69,7 @@ const initialState = {
     username: '',
     password: '',
     passwordConfirm: '',
+    check: '',
   },
   login: {
     username: '',
@@ -79,6 +80,7 @@ const initialState = {
     birthday: '',
     phone: '',
     username: '',
+    check: '',
     // check: ''
   },
   auth: null,

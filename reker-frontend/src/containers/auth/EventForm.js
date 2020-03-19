@@ -6,25 +6,6 @@ import EventAuthForm from '../../components/event/EventAuthForm';
 import { withRouter } from 'react-router-dom';
 
 
-
-const agree = () => {
-  let chkbox = document.getElementsByName('agree');
-  let chk = false;
-  for(var i=0 ; i<chkbox.length ; i++) {
-     if(chkbox[i].checked) {
-        chk = true; 
-      } else {
-       chk = false; 
-      } 
-    }
-
-    if (chk === false) 
-      alert('약관에 동의해주세요.')
-      return false;
-    
-  }
-
-
 const toggleChange = () => {
   this.setState(prevState => ({
     isJB: !prevState.isJB,
@@ -58,16 +39,16 @@ const EventForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    const { name, birthday, phone, username  } = form;
+    const { name, birthday, phone, username, check  } = form;
     // 하나라도 비어있다면
     if ([name, birthday, phone ].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
-      agree();
       return;
-    } else if ([username].includes('')) {
-      console.log('sc공2백');
-      alert('사전등록 되었습니다.')
-      history.push('/'); // 홈 화면으로 이동
+    }
+
+    if(!check) {
+      setError('약관에 동의해주세요.');
+      return;
     }
 
     dispatch(eventregister({ name, birthday, phone, username }));
@@ -92,16 +73,20 @@ const EventForm = ({ history }) => {
           history.push('/'); // 홈 화면으로 이동
         }
         setError('추천인 아이디가 존재하지 않습니다.');
-        agree();
+        ;
         return;
       } 
       // 기타 이유
       setError('양식을 정확히 입력해주세요.');
-      agree();
+      ;
       console.log('양식을 정확히 입력해주세요 ');
       return;
     }
-      if (auth) {
+      if (auth) {        
+  //   if (chk === false)  {
+  //   alert('약관에 동의해주세요.')
+  //   return false;
+  // }
       alert('사전등록 되었습니다.')
       history.push('/'); // 홈 화면으로 이동
       console.log(auth);

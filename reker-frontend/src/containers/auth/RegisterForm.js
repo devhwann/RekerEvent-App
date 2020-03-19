@@ -5,6 +5,7 @@ import AuthForm from '../../components/auth/AuthForm';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
+
 const RegisterForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const RegisterForm = ({ history }) => {
     authError: auth.authError,
     user: user.user,
   }));
+
   // 인풋 변경 이벤트 핸들러
   const onChange = e => {
     const { value, name } = e.target;
@@ -29,12 +31,17 @@ const RegisterForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    const { username, password, passwordConfirm } = form;
-    // 하나라도 비어있다면
+    const { username, password, passwordConfirm, check} = form;    
     if ([username, password, passwordConfirm].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
       return;
     }
+
+    if(!check) {
+      setError('약관에 동의해주세요.');
+      return;
+    }
+  
     // 비밀번호가 일치하지 않는다면
     if (password !== passwordConfirm) {
       setError('비밀번호가 일치하지 않습니다.');
@@ -42,8 +49,10 @@ const RegisterForm = ({ history }) => {
       dispatch(
         changeField({ form: 'register', key: 'passwordConfirm', value: '' }),
       );
+      // agree();
       return;
     }
+
     dispatch(register({ username, password }));
   };
 
@@ -58,6 +67,7 @@ const RegisterForm = ({ history }) => {
       // 계정명이 이미 존재할 때
       if (authError.response.status === 409) {
         setError('이미 존재하는 계정명입니다.');
+        // agree()
         return;
       }
       // 기타 이유
@@ -88,9 +98,9 @@ const RegisterForm = ({ history }) => {
   return (
     <AuthForm
       type="register"
-      form={form}
+      form={form}      
       onChange={onChange}
-      onSubmit={onSubmit}
+      onSubmit={onSubmit}      
       error={error}
     />
   );
