@@ -69,7 +69,8 @@ const initialState = {
     username: '',
     password: '',
     passwordConfirm: '',
-    check: '',
+    termsCheck: false,    
+    policyCheck: false, 
   },
   login: {
     username: '',
@@ -80,8 +81,8 @@ const initialState = {
     birthday: '',
     phone: '',
     username: '',
-    check: '',
-    // check: ''
+    termsCheck: false,    
+    policyCheck: false,    
   },
   auth: null,
   authError: null,

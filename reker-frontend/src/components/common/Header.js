@@ -23,6 +23,7 @@ const Wrapper = styled(Responsive)`
     font-size: 1.125rem;
     font-weight: 800;
     letter-spacing: 2px;
+    color:#0f43ff;
   }
   .right {
     display: flex;
@@ -57,7 +58,7 @@ const Header = ({ user, onLogout }) => {
             </div>
           ) : (
             <div className="right">
-              <Button to="/login">로그인</Button>
+              <Button to="/login" cyan>로그인</Button>
             </div>
           )}
         </Wrapper>

@@ -31,13 +31,17 @@ const RegisterForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    const { username, password, passwordConfirm, check} = form;    
+    const { username, password, passwordConfirm, termsCheck, policyCheck} = form;    
     if ([username, password, passwordConfirm].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
       return;
     }
 
-    if(!check) {
+    if(!termsCheck ) {
+      setError('약관에 동의해주세요.');
+      return;
+    }
+    if(!policyCheck) {
       setError('약관에 동의해주세요.');
       return;
     }

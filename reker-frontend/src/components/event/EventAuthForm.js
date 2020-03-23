@@ -413,18 +413,16 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
           </p>          
         </Privacy>
           <small>이용약관에 동의합니다. <Checkinput type="checkbox"  
+          name="termsCheck"
           onChange={onChange}
           value={form.check}
-          id="chk1"
-          name="check"
            />
            </small>
           <br/> 
           <small >개인정보보호에 동의합니다. <Checkinput type="checkbox"
-          id="chk2"
-          name="check"
+          name="policyCheck"
           onChange={onChange}
-          value={form.check}
+          value={form.policyCheck}
 
           // checked={form.checked}
           //  value={this.state.check}

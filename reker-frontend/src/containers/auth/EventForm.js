@@ -39,14 +39,20 @@ const EventForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    const { name, birthday, phone, username, check  } = form;
+    const { name, birthday, phone, username, termsCheck, policyCheck   } = form;
     // 하나라도 비어있다면
     if ([name, birthday, phone ].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
       return;
+    } else if ([username].includes('')){
+      console.log('넘겨');
     }
 
-    if(!check) {
+    if(!termsCheck ) {
+      setError('약관에 동의해주세요.');
+      return;
+    }
+    if(!policyCheck) {
       setError('약관에 동의해주세요.');
       return;
     }
@@ -62,31 +68,29 @@ const EventForm = ({ history }) => {
 
   // 회원가입 성공 / 실패 처리
   useEffect(() => {
-    const { username  } = form;
+    const { username } = form;
     
     if (authError) {
       // 계정명이 이미 존재하지 않을때
-      if (authError.response.status === 408) {
-         if ([username].includes('')) {
+      if (authError.response.status === 406) {
+        // if ([username].includes('')) {
           console.log('sc공2백');
+          console.log(auth);
           alert('사전등록 되었습니다.')
           history.push('/'); // 홈 화면으로 이동
-        }
+        // }
+      }else if (authError.response.status === 408) {
         setError('추천인 아이디가 존재하지 않습니다.');
-        ;
         return;
       } 
       // 기타 이유
       setError('양식을 정확히 입력해주세요.');
-      ;
+      
       console.log('양식을 정확히 입력해주세요 ');
       return;
     }
-      if (auth) {        
-  //   if (chk === false)  {
-  //   alert('약관에 동의해주세요.')
-  //   return false;
-  // }
+      if (auth) {
+        
       alert('사전등록 되었습니다.')
       history.push('/'); // 홈 화면으로 이동
       console.log(auth);

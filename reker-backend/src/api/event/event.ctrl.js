@@ -40,11 +40,19 @@ export const eventregister = async ctx => {
     if (exists) {
       console.log('계정이 있다요')
       // ctx.status = 200; // Confirm      
-    } else {
-         console.log("계정이 없습니다.")
-         ctx.status = 408; // Confirm
-         return;
-       }        
+    } 
+    else {
+      if ([username].includes('')) {
+        console.log('공백 입력');
+        ctx.status = 406;
+        // ctx.body = user.serialize();
+        // ctx.body = event;
+      } else {
+        console.log("계정이 없습니다.")
+        ctx.status = 408; // Confirm
+        return;
+      }
+    } 
     ctx.body = user.serialize();
     await event.save(); // 데이터베이스에 저장
     ctx.body = event;
