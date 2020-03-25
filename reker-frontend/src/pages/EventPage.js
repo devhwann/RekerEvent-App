@@ -1,6 +1,6 @@
 import React from 'react';
-import AuthTemplate from '../components/auth/AuthTemplate';
-import EventForm from '../containers/auth/EventForm';
+import AuthTemplate from '../components/Auth/AuthTemplate';
+import EventForm from '../containers/Auth/EventForm';
 
 
 const EventPage = () => {

@@ -4,7 +4,7 @@ import classNames from "classnames/bind";
 import Footer from '../components/common/Footer/Footer';
 import MainTab from '../components/common/Tab/MainTab';
 import Comment from '../components/Comment/Comment';
-import AuthForm from '../components/auth/AuthForm';
+import AuthForm from '../components/Auth/AuthForm';
 import HeaderContainer from '../containers/common/HeaderContainer';
 
 const cx = classNames.bind(styles);

@@ -415,7 +415,7 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
           <small>이용약관에 동의합니다. <Checkinput type="checkbox"  
           name="termsCheck"
           onChange={onChange}
-          value={form.check}
+          value={form.termsCheck}
            />
            </small>
           <br/> 

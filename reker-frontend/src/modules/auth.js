@@ -85,6 +85,7 @@ const initialState = {
     policyCheck: false,    
   },
   auth: null,
+  event: null,
   authError: null,
 };
 
@@ -151,6 +152,7 @@ const event = handleActions(
     [EVENTREGISTER_SUCCESS]: (state, { payload: auth }) => ({
       ...state,
       authError: null,
+      event,
       auth,
     }),
     // 회원가입 실패
