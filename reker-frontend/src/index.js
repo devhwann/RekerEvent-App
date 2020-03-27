@@ -12,7 +12,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 import { tempSetUser, check } from './modules/user';
-import './styles/base.scss';
+import './styles/lib/base.scss';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(

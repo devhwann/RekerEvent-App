@@ -1,12 +1,15 @@
 import React from 'react';
-import classNames from "classnames/bind";
-import styles from './Candidate.scss';
+import styled from 'styled-components';
 
-const cx = classNames.bind(styles);
+const CandidateContent = styled.div`
+  text-align: left;
+  width: 60%;
+  margin: 0 auto;
+`
 
 const Candidate = () => {
   return (
-    <div className={cx('candidate')}>
+    <CandidateContent>
       {/* <img src="Candidate.png" alt="" width="65%"/> */}
       <p>
       ▷ 구인탐색 > 계약 > 관리
@@ -18,7 +21,7 @@ const Candidate = () => {
           <br/>Key Point 2: 고용주가 서버를 통해 근로자에게 임금 지급(임금체불을 미연에 방지)
           <br/>Key Point 3: 근로보증 출근보증(약속, 책임)
       </p>
-    </div>
+    </CandidateContent>
   );
 };
 

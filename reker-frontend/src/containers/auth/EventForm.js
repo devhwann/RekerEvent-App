@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, eventregister } from '../../modules/auth';
 import EventAuthForm from '../../components/event/EventAuthForm';
-import { withRouter } from 'react-router-dom';
 // import { check } from '../../modules/user';
+import { withRouter } from 'react-router-dom';
 
 
 const toggleChange = () => {
@@ -15,10 +15,9 @@ const toggleChange = () => {
 const EventForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const { form, auth, event, authError, user } = useSelector(({ auth, user }) => ({
+  const { form, auth,  authError, user } = useSelector(({ auth, user }) => ({
     form: auth.eventregister,
     auth: auth.auth,
-    event: event.event,
     authError: auth.authError,
     user: user.user,
   }));
@@ -45,10 +44,9 @@ const EventForm = ({ history }) => {
     if ([name, birthday, phone ].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
       return;
-    } 
-    // else if ([username].includes('')){
-    //   console.log('넘겨');
-    // }
+    } else if ([username].includes('')){
+      console.log('넘겨');
+    }
 
     if(!termsCheck ) {
       setError('약관에 동의해주세요.');
@@ -91,14 +89,12 @@ const EventForm = ({ history }) => {
       console.log('양식을 정확히 입력해주세요 ');
       return;
     }
-      if (event) {
+      if (auth) {
+        
       alert('사전등록 되었습니다.')
       history.push('/'); // 홈 화면으로 이동
-      console.log(event);
+      console.log(auth);
       // dispatch(check());
-    }
-    if (auth) {
-      alert('로그아웃 후 사전등록이 가능합니다.')
     }
   }, [auth, authError, dispatch]);
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faCoffee, faCameram,faSmile, faSmileBeam,faBlog  } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFacebook, faInstagram, } from '@fortawesome/free-brands-svg-icons'
+// import { faBlog  } from '@fortawesome/free-solid-svg-icons'
+import {  faFacebook, faInstagram, } from '@fortawesome/free-brands-svg-icons'
 
 const SocialShare = () => {
   return (

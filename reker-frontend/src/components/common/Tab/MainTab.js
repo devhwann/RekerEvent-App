@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Tabs, Tab, Panel } from '@bumaga/tabs';
-import './MainTab.scss';
+// import './MainTab.scss';
 import Candidate from '../../Candidate/Candidate';
 import SocialShare from '../../SNS/SocialShare';
 import Employer from '../../Employer/Employer';

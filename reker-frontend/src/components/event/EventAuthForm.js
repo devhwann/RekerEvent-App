@@ -1,8 +1,7 @@
-import React, { Com} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import palette from '../../lib/styles/palette';
-import palette from '../../styles/palette';
+import palette from '../../styles/lib/palette'
 import Button from '../common/Button';
 
 /**
@@ -103,7 +102,7 @@ const EventAuthForm = ({ type, form, onChange, onSubmit, error }) => {
         <StyledInput
           autoComplete="birthday"
           name="birthday"
-          placeholder="생년월일"
+          placeholder="생년월일" // 아이디? 
           type="birthday"
           onChange={onChange}
           value={form.birthday}

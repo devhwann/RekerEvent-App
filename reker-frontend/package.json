@@ -10,6 +10,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@svgr/webpack": "4.3.2",
+    "@types/jest": "^25.1.4",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "axios": "^0.19.1",
@@ -41,7 +42,7 @@
     "immer": "^5.3.2",
     "include-media": "^1.4.9",
     "is-wsl": "^1.1.0",
-    "jest": "24.9.0",
+    "jest": "^25.2.3",
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.0",
@@ -83,7 +84,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "jest --watchAll --verbose",
+    "jest": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -156,5 +158,8 @@
       "react-app"
     ]
   },
-  "proxy": "http://localhost:4000/"
+  "proxy": "http://localhost:4000/",
+  "main": "index.js",
+  "author": "JiHwan <hg_07@naver.com>",
+  "license": "MIT"
 }

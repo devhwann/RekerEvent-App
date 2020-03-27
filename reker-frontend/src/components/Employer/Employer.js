@@ -1,15 +1,18 @@
 import React from 'react';
-import styles from './Employer.scss';
-import classNames from "classnames/bind";
-
-const cx = classNames.bind(styles);
+import styled from 'styled-components';
 
 
+
+const EmployerContent = styled.div`
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+`;
 
 
 const Employer = () => {
   return (
-    <div className={cx('Employer')}>
+    <EmployerContent>
       {/* <img src="Employer.png" alt="" width="65%"/>*/}
       <p>
       ▷ 구인탐색 > 계약 > 관리
@@ -21,7 +24,7 @@ const Employer = () => {
           <br/>Key Point 2: 고용주가 서버를 통해 근로자에게 임금 지급(임금체불을 미연에 방지)
           <br/>Key Point 3: 근로보증 출근보증(약속, 책임)
       </p>
-    </div>
+    </EmployerContent>
   );
 };
 

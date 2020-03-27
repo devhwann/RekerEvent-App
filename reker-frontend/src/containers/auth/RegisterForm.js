@@ -71,7 +71,6 @@ const RegisterForm = ({ history }) => {
       // 계정명이 이미 존재할 때
       if (authError.response.status === 409) {
         setError('이미 존재하는 계정명입니다.');
-        // agree()
         return;
       }
       // 기타 이유
