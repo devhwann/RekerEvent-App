@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, eventregister } from '../../modules/auth';
-import EventAuthForm from '../../components/event/EventAuthForm';
+import EventAuthForm from '../../components/Event/EventAuthForm';
 // import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
 
-const toggleChange = () => {
-  this.setState(prevState => ({
-    isJB: !prevState.isJB,
-  }));
-}
+// const toggleChange = () => {
+//   this.setState(prevState => ({
+//     isJB: !prevState.isJB,
+//   }));
+// }
 
 const EventForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const { form, auth,  authError, user } = useSelector(({ auth, user }) => ({
+  const { form, auth, event, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.eventregister,
     auth: auth.auth,
+    event:Event.event,
     authError: auth.authError,
     user: user.user,
   }));
@@ -63,12 +64,14 @@ const EventForm = ({ history }) => {
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
     dispatch(initializeForm('eventregister'));
+    if (auth) {	
+      alert('로그아웃 후 사전등록이 가능합니다.')	
+    }
   }, [dispatch]);
 
 
   // 회원가입 성공 / 실패 처리
   useEffect(() => {
-    const { username } = form;
     
     if (authError) {
       // 계정명이 이미 존재하지 않을때
@@ -89,14 +92,17 @@ const EventForm = ({ history }) => {
       console.log('양식을 정확히 입력해주세요 ');
       return;
     }
-      if (auth) {
-        
-      alert('사전등록 되었습니다.')
-      history.push('/'); // 홈 화면으로 이동
-      console.log(auth);
-      // dispatch(check());
+    if (event) {
+      alert('사전등록 되었습니다.')	      
+      history.push('/'); // 홈 화면으로 이동	
+      console.log(event);
     }
-  }, [auth, authError, dispatch]);
+    if (user) {
+      alert('로그아웃 후 사전등록이 가능 합니다.')	      
+    }
+    
+
+  }, [auth, authError, dispatch , history, event]);
 
   // user 값이 잘 설정되었는지 확인
   useEffect(() => {
