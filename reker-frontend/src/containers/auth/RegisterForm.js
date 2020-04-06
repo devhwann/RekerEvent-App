@@ -57,7 +57,7 @@ const RegisterForm = ({ history }) => {
       return;
     }
 
-    dispatch(register({ username, password }));
+    dispatch(register({ username, password, termsCheck, policyCheck }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함

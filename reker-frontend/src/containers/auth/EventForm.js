@@ -67,7 +67,7 @@ const EventForm = ({ history }) => {
     if (auth) {	
       alert('로그아웃 후 사전등록이 가능합니다.')	
     }
-  }, [dispatch]);
+  }, [dispatch, auth]);
 
 
   // 회원가입 성공 / 실패 처리
@@ -102,7 +102,7 @@ const EventForm = ({ history }) => {
     }
     
 
-  }, [auth, authError, dispatch , history, event]);
+  }, [auth, authError, dispatch , history, event, user]);
 
   // user 값이 잘 설정되었는지 확인
   useEffect(() => {

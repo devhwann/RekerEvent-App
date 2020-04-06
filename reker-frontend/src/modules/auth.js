@@ -32,9 +32,9 @@ export const changeField = createAction(
   }),
 );
 export const initializeForm = createAction(INITIALIZE_FORM, form => form); // register / login
-export const register = createAction(REGISTER, ({ username, password }) => ({
+export const register = createAction(REGISTER, ({ username, password,termsCheck,policyCheck }) => ({
   username,
-  password,
+  password,  
 }));
 export const eventregister = createAction(
   EVENTREGISTER,
