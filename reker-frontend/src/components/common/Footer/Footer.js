@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 
 const FooterContent = styled.div`
-position: absolute;
-bottom: 0px;
-margin-left: 3rem;
+
+margin-left: 2rem;
+padding-top: 2rem;
 small {
   display: block;
   font-weight: 300;

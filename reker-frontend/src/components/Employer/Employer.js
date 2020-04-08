@@ -7,6 +7,10 @@ const EmployerContent = styled.div`
     text-align: left;
     width: 60%;
     margin: 0 auto;
+
+    @media only screen and (max-width: 600px) {
+      width: 90% ;
+    }
 `;
 
 

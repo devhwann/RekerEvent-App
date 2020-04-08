@@ -1,5 +1,5 @@
 .wrap {
-  display: flex;
+  // display: flex;
   height: 950px;
   // margin-top: -1rem;
   .container {
@@ -14,6 +14,7 @@
     border-collapse: separate;
     height: 750px;
     padding: 1rem;
+    margin-top: 2rem;
     -ms-overflow-style: none; // IE에서 스크롤바 감춤
 
     &::-webkit-scrollbar {
@@ -29,6 +30,9 @@
         font-weight: 300;
       }
     }
+    @media only screen and (max-width: 600px) {
+      width: 85%;
+    }
   }
   .content-wrap {
     // display: flex;
@@ -37,9 +41,7 @@
   }
 
   .footer {
-    position: absolute;
-    bottom: 0px;
-    margin-left: 3rem;
+        
     small {
       display: block;
       font-weight: 300;
