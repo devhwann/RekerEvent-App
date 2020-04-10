@@ -7,6 +7,7 @@ import loading from './loading';
 import user, { userSaga } from './user';
 
 const rootReducer = combineReducers({
+  comment,
   auth,
   loading,
   user

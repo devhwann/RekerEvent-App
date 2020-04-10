@@ -61,7 +61,7 @@ export const write = async ctx => {
   const { body } = ctx.request.body;
   const comment = new Comment({
     body,
-    user: ctx.state.user,
+    // user: ctx.state.user,
   });
   try {
     await comment.save();
