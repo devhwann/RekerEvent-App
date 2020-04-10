@@ -8,24 +8,24 @@ import { takeLatest } from 'redux-saga/effects';
 const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
 const CHANGE_FIELD = 'write/CHANGE_FIELD'; // 특정 key 값 바꾸기
 const [
-  WRITE_COOMENT,
-  WRITE_COOMENT_SUCCESS,
-  WRITE_COOMENT_FAILURE,
-] = createRequestActionTypes('write/WRITE_COOMENT'); // 포스트 작성
+  WRITE_COMMENT,
+  WRITE_COMMENT_SUCCESS,
+  WRITE_COMMENT_FAILURE,
+] = createRequestActionTypes('write/WRITE_COMMENT'); // 포스트 작성
 
 export const initialize = createAction(INITIALIZE);
 export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
   key,
   value,
 }));
-export const writeComment = createAction(WRITE_COOMENT, ({ body }) => ({
+export const writeComment = createAction(WRITE_COMMENT, ({ body }) => ({
   body,
 }));
 
 // saga 생성
-const writeCommentSaga = createRequestSaga(WRITE_Comment, postsAPI.writeComment);
+const writeCommentSaga = createRequestSaga(WRITE_COMMENT, postsAPI.writeComment);
 export function* writeSaga() {
-  yield takeLatest(WRITE_COOMENT, writeCommentSaga);
+  yield takeLatest(WRITE_COMMENT, writeCommentSaga);
 }
 
 const initialState = {
