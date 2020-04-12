@@ -102,6 +102,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           value={form.password}
         />
         {type === 'register' && (
+          <div>
           <StyledInput
             autoComplete="new-password"
             name="passwordConfirm"
@@ -110,6 +111,23 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.passwordConfirm}
           />
+          <StyledInput
+            autoComplete="new-password"
+            name="passwordConfirm"
+            placeholder="번호"
+            type="password"
+            onChange={onChange}
+            value={form.passwordConfirm}
+          />
+          <StyledInput
+            autoComplete="Address"
+            name="Address"
+            placeholder="ㄴ"
+            type="Address"
+            onChange={onChange}
+            value={form.Address}
+          />
+          </div>
         )}
         {type === 'register' && (
           <div>

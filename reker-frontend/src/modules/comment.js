@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
-import * as postsAPI from '../lib/api/comments';
+import * as commentsAPI from '../lib/api/comments';
 import { takeLatest } from 'redux-saga/effects';
 
 const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
@@ -23,7 +23,7 @@ export const writeComment = createAction(WRITE_COMMENT, ({ body }) => ({
 }));
 
 // saga 생성
-const writeCommentSaga = createRequestSaga(WRITE_COMMENT, postsAPI.writeComment);
+const writeCommentSaga = createRequestSaga(WRITE_COMMENT, commentsAPI.writeComment);
 export function* writeSaga() {
   yield takeLatest(WRITE_COMMENT, writeCommentSaga);
 }

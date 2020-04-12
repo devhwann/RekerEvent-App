@@ -4,8 +4,14 @@ import styled from 'styled-components';
 
 const FooterContent = styled.div`
 
-margin-left: 2rem;
-padding-top: 2rem;
+margin-left: 3rem;
+padding-top: 6rem;
+
+
+@media only screen and (max-width: 768px) {
+  margin-left: 3rem;
+  padding: 3rem 0rem 1rem 0rem;
+}
 small {
   display: block;
   font-weight: 300;
