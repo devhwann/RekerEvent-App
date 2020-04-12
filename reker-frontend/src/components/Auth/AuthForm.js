@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import palette from '../../styles/lib/palette';
 import Button from '../common/Button';
 
+
 /**
  * 회원가입 또는 로그인 폼을 보여줍니다.
  */
@@ -120,13 +121,14 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             value={form.passwordConfirm}
           />
           <StyledInput
+          id="sample4_postcode"
             autoComplete="Address"
             name="Address"
-            placeholder="ㄴ"
+            placeholder="주소를 입력해주세요."
             type="Address"
             onChange={onChange}
             value={form.Address}
-          />
+          />          
           </div>
         )}
         {type === 'register' && (
