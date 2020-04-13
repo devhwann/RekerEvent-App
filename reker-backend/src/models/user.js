@@ -5,6 +5,8 @@ import jwt from 'jsonwebtoken';
 const UserSchema = new Schema({
   username: String,
   hashedPassword: String,
+  phone: String,
+  address: String
 });
 
 UserSchema.methods.setPassword = async function(password) {

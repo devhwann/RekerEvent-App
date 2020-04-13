@@ -32,9 +32,11 @@ export const changeField = createAction(
   }),
 );
 export const initializeForm = createAction(INITIALIZE_FORM, form => form); // register / login
-export const register = createAction(REGISTER, ({ username, password,termsCheck,policyCheck }) => ({
+export const register = createAction(REGISTER, ({ username, password,  phone, address }) => ({
   username,
-  password,  
+  password,
+  phone,
+  address  
 }));
 export const eventregister = createAction(
   EVENTREGISTER,
@@ -46,7 +48,7 @@ export const eventregister = createAction(
     // check
   }),
 );
-export const login = createAction(LOGIN, ({ username, password }) => ({
+export const login = createAction(LOGIN, ({ username, password, }) => ({
   username,
   password,
 }));
@@ -69,6 +71,8 @@ const initialState = {
     username: '',
     password: '',
     passwordConfirm: '',
+    phone: '',
+    address: '',
     termsCheck: false,    
     policyCheck: false, 
   },
