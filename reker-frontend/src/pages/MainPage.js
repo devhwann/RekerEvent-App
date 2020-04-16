@@ -3,7 +3,7 @@ import styles from '../styles/MainPage.scss'
 import classNames from "classnames/bind";
 import Footer from '../components/common/Footer/Footer';
 import MainTab from '../components/common/Tab/MainTab';
-import Comment from '../components/Comment/Comment';
+import CommentForm from '../components/Comment/Comment';
 import HeaderContainer from '../containers/common/HeaderContainer';
 
 const cx = classNames.bind(styles);
@@ -18,7 +18,7 @@ const MainPage = () => {
             <h1 className="brand-logo">Reker<small>- 실시간 1:1 채용 구직 프로세스</small></h1>
           </div>
           <MainTab/>                    
-          <Comment/>
+          <CommentForm/>
         </div>
       </div>
       <Footer/>

@@ -12,6 +12,8 @@ export const register = ({ username, password, phone, address }) =>
 export const eventregister = ({ name, birthday, phone, username }) =>
   client.post('/api/event/eventregister', { name, birthday, phone, username});
 
+
+
 // 로그인 상태 확인
 export const check = () => client.get('/api/auth/check');
 

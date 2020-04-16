@@ -14,7 +14,8 @@ const [
 ] = createRequestActionTypes('write/WRITE_COMMENT'); // 포스트 작성
 
 export const initialize = createAction(INITIALIZE);
-export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
+export const changeField = createAction(CHANGE_FIELD, ({ form ,key, value }) => ({
+  form,
   key,
   value,
 }));
@@ -47,12 +48,12 @@ const write = handleActions(
       comment: null,
       commentError: null,
     }),
-    // 포스트 작성 성공
+    // 댓글 작성 성공
     [WRITE_COMMENT_SUCCESS]: (state, { payload: comment }) => ({
       ...state,
       comment,
     }),
-    // 포스트 작성 실패
+    // 댓글 작성 실패
     [WRITE_COMMENT_FAILURE]: (state, { payload: commentError }) => ({
       ...state,
       commentError,
