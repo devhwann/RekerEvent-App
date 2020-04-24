@@ -9,8 +9,9 @@ const CommentForm = ({ history }) => {
   const dispatch = useDispatch();
   const { body } = useSelector(({ comment, write }) => ({    
     form: comment.write,
-    
     body: write.body,
+    commentError: comment.commentError,
+
   }));
   // const onChangeField = useCallback(payload => dispatch(changeField(payload)), [
   //   dispatch,
@@ -20,7 +21,7 @@ const CommentForm = ({ history }) => {
     const { value,body} = e.target;
     dispatch(
       changeField({
-        form: 'comment',
+        form: 'Comment',
         key: body,
         value,
       }),
