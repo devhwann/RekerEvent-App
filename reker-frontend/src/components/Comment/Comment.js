@@ -49,11 +49,11 @@ const CommentForm = ( form, onChange, onSubmit, error) => {
       <CommentFormBlock>
         <form onSubmit={onSubmit}>
         <StyledInput
-          autoComplete="comment"
-          name="comment"
+          autoComplete="body"
+          name="body"
           placeholder="comment write"
           onChange={onChange}
-          value={form.comment}
+          value={form.body}
         />
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>

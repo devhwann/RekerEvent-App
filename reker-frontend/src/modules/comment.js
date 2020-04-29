@@ -1,19 +1,21 @@
 import { createAction, handleActions } from 'redux-actions';
+import produce from 'immer';
 import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
 import * as commentsAPI from '../lib/api/comments';
 import { takeLatest } from 'redux-saga/effects';
 
-const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
-const CHANGE_FIELD = 'write/CHANGE_FIELD'; // 특정 key 값 바꾸기
+const INITIALIZE_FORM = 'comments/INITIALIZE_FORM';
+// const CHANGE_FIELD = 'write/CHANGE_FIELD'; // 특정 key 값 바꾸기
+const CHANGE_FIELD = 'comments/CHANGE_FIELD'; // 특정 key 값 바꾸기
 const [
   WRITE_COMMENT,
   WRITE_COMMENT_SUCCESS,
   WRITE_COMMENT_FAILURE,
 ] = createRequestActionTypes('write/WRITE_COMMENT'); // 포스트 작성
 
-export const initialize = createAction(INITIALIZE);
+export const initializeForm = createAction(INITIALIZE_FORM, form => form); // register / login
 export const changeField = createAction(CHANGE_FIELD, ({ form ,key, value }) => ({
   form,
   key,
@@ -30,18 +32,25 @@ export function* writeSaga() {
 }
 
 const initialState = {
-  body: '',
+  comment : {
+    body : ''
+  },
+  // body: '',
   comment: null,
   commentError: null,
 };
 
-const write = handleActions(
+const comment = handleActions(
   {
-    [INITIALIZE]: state => initialState, // initialState를 넣으면 초기상태로 바뀜
-    [CHANGE_FIELD]: (state, { payload: { key, value } }) => ({
+    [INITIALIZE_FORM]: (state, { payload: form }) => ({
       ...state,
-      [key]: value, // 특정 key 값을 업데이트
+      [form]: initialState[form],
+      authError: null, // 폼 전환 시 회원 인증 에러 초기화
     }),
+    [CHANGE_FIELD]: (state, { payload: { form, key, value } }) =>
+      produce(state, draft => {
+        draft[form][key] = value; // 예: state.register.username을 바꾼다
+      }),
     [WRITE_COMMENT]: state => ({
       ...state,
       // post와 postError를 초기화
@@ -62,4 +71,4 @@ const write = handleActions(
   initialState,
 );
 
-export default write;
+export default comment;

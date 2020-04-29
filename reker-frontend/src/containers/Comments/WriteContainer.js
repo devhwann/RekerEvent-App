@@ -1,28 +1,30 @@
 import React, { useEffect, useCallback } from 'react';
 import CommentFormBlock from '../../components/Comment';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField, initialize, writeComment } from '../../modules/comment';
+import { changeField, initialize, omment } from '../../modules/comment';
+// 여기서 읽혀야함 ..
 import { withRouter } from 'react-router-dom';
 
 
 const CommentForm = ({ history }) => {
   const dispatch = useDispatch();
-  const { body } = useSelector(({ comment, write }) => ({    
+  const { form, comment, commentError, user} = useSelector(({ comment, write, user }) => ({    
+    // body: write.body,
     form: comment.write,
-    body: write.body,
+    comment:comment.comment, 
     commentError: comment.commentError,
-
+    user: user.user
   }));
   // const onChangeField = useCallback(payload => dispatch(changeField(payload)), [
   //   dispatch,
   // ]);
 
   const onChange = e => {
-    const { value,body} = e.target;
+    const { value,name} = e.target;
     dispatch(
       changeField({
         form: 'Comment',
-        key: body,
+        key: name,
         value,
       }),
     );
