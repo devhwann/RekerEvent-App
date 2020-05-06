@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 import posts from './posts';
-import comments from './comments';
+import comment from './comment';
 import auth from './auth';
 import event from './event';
 
@@ -8,7 +8,7 @@ const api = new Router();
 
 api.use('/posts', posts.routes());
 api.use('/event', event.routes());
-api.use('/comments', comments.routes());
+api.use('/comment', comment.routes());
 api.use('/auth', auth.routes());
 
 // 라우터를 내보냅니다.
