@@ -5,7 +5,7 @@ import auth, { authSaga } from './auth';
 import loading from './loading';
 // import event from './event';
 import user, { userSaga } from './user';
-import comment, { writecommentSaga } from './comment';
+import comment, { commentSaga } from './comment';
 
 const rootReducer = combineReducers({
   comment,

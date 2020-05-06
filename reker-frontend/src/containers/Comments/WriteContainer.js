@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import CommentFormBlock from '../../components/Comment';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField, initialize, omment } from '../../modules/comment';
+import { changeField, initialize, writeComment } from '../../modules/comment';
 // 여기서 읽혀야함 ..
 import { withRouter } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ const CommentForm = ({ history }) => {
     const { value,name} = e.target;
     dispatch(
       changeField({
-        form: 'Comment',
+        form: 'writeComment',
         key: name,
         value,
       }),
@@ -38,7 +38,7 @@ const CommentForm = ({ history }) => {
       console.log('not comment')
       return;
     } 
-    dispatch(comment({ comment}))
+    dispatch(writeComment ({ body }))
   };
 
   // 언마운트될 때 초기화

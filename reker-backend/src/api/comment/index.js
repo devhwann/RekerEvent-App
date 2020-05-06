@@ -1,12 +1,12 @@
 import Router from 'koa-router';
-import * as commentsCtrl from './comments.ctrl';
+import * as commentCtrl from './comment.ctrl';
 // import checkLoggedIn from '../../lib/checkLoggedIn';
 
 
-const comments = new Router();
+const comment = new Router();
 
 // comments.get('/', commentsCtrl.list);
-comments.post('/',  commentsCtrl.write);
+comment.post('/',  commentCtrl.write);
 
 // const comment = new Router(); // /api/posts/:id
 // comments.get('/', commentsCtrl.read);
@@ -15,6 +15,6 @@ comments.post('/',  commentsCtrl.write);
 
 // comments.use('/:id', commentsCtrl.getPostById, post.routes());
 
-export default comments;
+export default comment;
 
 

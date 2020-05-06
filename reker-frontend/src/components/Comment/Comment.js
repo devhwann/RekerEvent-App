@@ -59,13 +59,7 @@ const CommentForm = ( form, onChange, onSubmit, error) => {
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
           등록
         </ButtonWithMarginTop>
-        </form>
-        {/* <CommentWrite
-          placeholder="Comemnt writing."
-          onChange={onChangeBody}
-          value={body}
-        /> */}
-
+        </form>        
       </CommentFormBlock>
   );
 };
