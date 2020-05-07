@@ -1,7 +1,7 @@
 import client from './client';
 
 // 
-export const writeComment = ({ body }) =>
+export const write = ({ body }) =>
   client.post('/api/comment/write', { body });
 
 // export const
