@@ -7,14 +7,12 @@ import * as commentAPI from '../lib/api/comment';
 import { takeLatest } from 'redux-saga/effects';
 
 const INITIALIZE_FORM = 'comment/INITIALIZE_FORM';
-// const CHANGE_FIELD = 'write/CHANGE_FIELD'; // 특정 key 값 바꾸기
 const CHANGE_FIELD = 'comment/CHANGE_FIELD'; // 특정 key 값 바꾸기
 const [
-  COMMENT,
-  WRITE_COMMENT,
-  WRITE_COMMENT_SUCCESS,
-  WRITE_COMMENT_FAILURE,
-] = createRequestActionTypes('comment/write'); // 포스트 작성
+  WRITECOMMENT,
+  WRITECOMMENT_SUCCESS,
+  WRITECOMMENT_FAILURE,
+] = createRequestActionTypes('comment/WRITECOMMENT'); // 포스트 작성
 
 export const initializeForm = createAction(INITIALIZE_FORM, form => form); // register / login
 export const changeField = createAction(CHANGE_FIELD, ({ form ,key, value }) => ({
@@ -22,19 +20,20 @@ export const changeField = createAction(CHANGE_FIELD, ({ form ,key, value }) => 
   key,
   value,
 }));
-export const writeComment = createAction(WRITE_COMMENT, ({ body }) => ({
+
+export const writeComment = createAction(WRITECOMMENT, ({ body }) => ({
   body,
 }));
 
 // saga 생성
-const writecommentaga = createRequestSaga(WRITE_COMMENT, commentAPI.writeComment);
+const writecommentaga = createRequestSaga(WRITECOMMENT, commentAPI.writeComment);
 export function* writeSaga() {
-  yield takeLatest(WRITE_COMMENT, writecommentaga);
+  yield takeLatest(WRITECOMMENT, writecommentaga);
 }
 
 const initialState = {
-  comment : {
-    body : ''
+  writecomment : {
+    body : '',
   },
   // body: '',
   comment: null,
@@ -50,7 +49,7 @@ const comment = handleActions(
     [INITIALIZE_FORM]: (state, { payload: form }) => ({
       ...state,
       [form]: initialState[form],
-      authError: null, // 폼 전환 시 회원 인증 에러 초기화
+      commentError: null, // 폼 전환 시 회원 인증 에러 초기화
     }),
     // [WRITE_COMMENT]: state => ({
     //   ...state,
@@ -59,12 +58,12 @@ const comment = handleActions(
     //   commentError: null,
     // }),
     // 댓글 작성 성공
-    [WRITE_COMMENT_SUCCESS]: (state, { payload: comment }) => ({
+    [WRITECOMMENT_SUCCESS]: (state, { payload: comment }) => ({
       ...state,
       comment,
     }),
     // 댓글 작성 실패
-    [WRITE_COMMENT_FAILURE]: (state, { payload: commentError }) => ({
+    [WRITECOMMENT_FAILURE]: (state, { payload: commentError }) => ({
       ...state,
       commentError,
     }),

@@ -18,7 +18,7 @@ const MainPage = () => {
             <h1 className="brand-logo">Reker<small>- 실시간 1:1 채용 구직 프로세스</small></h1>
           </div>
           <MainTab/>                    
-          <CommentForm/>
+          {/* <CommentForm/> */}
         </div>
       </div>
       <Footer/>

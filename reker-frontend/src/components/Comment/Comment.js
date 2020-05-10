@@ -1,26 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import palette from '../../styles/lib/palette';
+import palette from '../../styles/lib/palette'
 import Button from '../common/Button';
 
+/**
+ * 회원가입 또는 로그인 폼을 보여줍니다.
+ */
 
-// const onChangeBody = e => {
-//   onChangeField({ key: 'title', value: e.target.value });
-// };
-
-
-const CommentFormBlock = styled.div `
-
-`
-
-const CommentWrite = styled.input `
-
-
-`
-const ButtonWithMarginTop = styled(Button)`
-  margin-top: 1rem;
+const CommentFormBlock = styled.div`
+  h3 {
+    margin: 0;
+    color: ${palette.gray[8]};
+    margin-bottom: 1rem;  
+  }
 `;
+
+const Privacy = styled.div`  
+
+  p {
+    height: 50px;
+    overflow: auto;
+  }
+`
+
+/**
+ * 스타일링된 input
+ */
+
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
@@ -36,6 +43,40 @@ const StyledInput = styled.input`
     margin-top: 1rem;
   }
 `;
+
+const Checkinput = styled.input`
+  background: red;
+  border: 0;
+`;
+
+/**
+ * 폼 하단에 로그인 혹은 회원가입 링크를 보여줌
+ */
+const Footer = styled.div`
+  margin-top: 2rem;
+  text-align: right;
+  a {
+    color: ${palette.gray[6]};
+    text-decoration: underline;
+    &:hover {
+      color: ${palette.gray[9]};
+    }
+  }
+`;
+
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 1rem;
+`;
+
+const textMap = {
+  event: '사전등록',
+};
+
+
+
+/**
+ * 에러를 보여줍니다
+ */
 const ErrorMessage = styled.div`
   color: red;
   text-align: center;
@@ -43,19 +84,21 @@ const ErrorMessage = styled.div`
   margin-top: 1rem;
 `;
 
+  
 
-const CommentForm = ( form, onChange, onSubmit, error) => {
+const CommentForm = ({ form, onChange, onSubmit, error }) => {
+  
   return (
-      <CommentFormBlock>
-        <form onSubmit={onSubmit}>
-        <StyledInput
+    <CommentFormBlock>
+      <form onSubmit={onSubmit}>
+      <StyledInput
           autoComplete="body"
           name="body"
           placeholder="comment write"
           onChange={onChange}
           value={form.body}
         />
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+    {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
           등록
         </ButtonWithMarginTop>

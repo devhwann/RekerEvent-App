@@ -12,7 +12,7 @@ const RegisterForm = ({ history }) => {
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.register,
     auth: auth.auth,
-    authError: auth.authError,
+    // authError: auth.authError,
     user: user.user,
   }));
 

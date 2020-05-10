@@ -45,8 +45,7 @@ const EventForm = ({ history }) => {
     if ([name, birthday, phone ].includes('')) {
       setError('빈 칸을 모두 입력하세요.');
       return;
-    } else if ([username].includes('')){
-      console.log('넘겨');
+    } else if ([username].includes('')){      
     }
 
     if(!termsCheck ) {

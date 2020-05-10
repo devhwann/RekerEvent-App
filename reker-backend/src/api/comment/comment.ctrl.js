@@ -41,7 +41,7 @@ export const checkOwncomment = (ctx, next) => {
   }
 */
 
-export const write = async ctx => {
+export const writeComment = async ctx => {
   const schema = Joi.object().keys({
     // 객체가 다음 필드를 가지고 있음을 검증
     body: Joi.string().required(),
