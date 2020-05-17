@@ -7,6 +7,7 @@ import HeaderContainer from '../containers/common/HeaderContainer';
 // import RegisterForm1 from '../containers/Auth1/RegisterForm1';
 import RegisterForm from '../containers/Auth/RegisterForm';
 import CommentForm from '../containers/Comment/CommentForm';
+import CommentList from '../components/comments/CommentList';
 // import AuthForm1 from '../components/Auth/AuthForm1';
 
 
@@ -22,9 +23,9 @@ const MainPage = () => {
             <h1 className="brand-logo">Reker<small>- 실시간 1:1 채용 구직 프로세스</small></h1>
           </div>
           <MainTab/>                    
-          {/* <CommentForm/> */}
       {/* <AuthForm1/> */}
       <CommentForm/>
+          <CommentList/>
       {/* <RegisterForm/> */}
         </div>
       </div>
