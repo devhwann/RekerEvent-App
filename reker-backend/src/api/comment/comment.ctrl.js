@@ -2,36 +2,36 @@ import Comment from '../../models/comment';
 import mongoose from 'mongoose';
 import Joi from 'joi';
 
-const { ObjectId } = mongoose.Types;
+// const { ObjectId } = mongoose.Types;
 
-export const getcommentById = async (ctx, next) => {
-  const { id } = ctx.params;
-  if (!ObjectId.isValid(id)) {
-    ctx.status = 400; // Bad Request
-    return;
-  }
-  try {
-    const comment = await comment.findById(id);
-    // 포스트가 존재하지 않을 때
-    if (!comment) {
-      ctx.status = 404; // Not Found
-      return;
-    }
-    ctx.state.comment = comment;
-    return next();
-  } catch (e) {
-    ctx.throw(500, e);
-  }
-};
+// export const getcommentById = async (ctx, next) => {
+//   const { id } = ctx.params;
+//   if (!ObjectId.isValid(id)) {
+//     ctx.status = 400; // Bad Request
+//     return;
+//   }
+//   try {
+//     const comment = await comment.findById(id);
+//     // 포스트가 존재하지 않을 때
+//     if (!comment) {
+//       ctx.status = 404; // Not Found
+//       return;
+//     }
+//     ctx.state.comment = comment;
+//     return next();
+//   } catch (e) {
+//     ctx.throw(500, e);
+//   }
+// };
 
-export const checkOwncomment = (ctx, next) => {
-  const { user, comment } = ctx.state;
-  if (comment.user._id.toString() !== user._id) {
-    ctx.status = 403;
-    return;
-  }
-  return next();
-};
+// export const checkOwncomment = (ctx, next) => {
+//   const { user, comment } = ctx.state;
+//   if (comment.user._id.toString() !== user._id) {
+//     ctx.status = 403;
+//     return;
+//   }
+//   return next();
+// };
 
 /*
   comment /api/comments
@@ -41,7 +41,7 @@ export const checkOwncomment = (ctx, next) => {
   }
 */
 
-export const writeComment = async ctx => {
+export const write = async ctx => {
   const schema = Joi.object().keys({
     // 객체가 다음 필드를 가지고 있음을 검증
     body: Joi.string().required(),

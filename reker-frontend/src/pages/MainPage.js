@@ -3,8 +3,12 @@ import styles from '../styles/MainPage.scss'
 import classNames from "classnames/bind";
 import Footer from '../components/common/Footer/Footer';
 import MainTab from '../components/common/Tab/MainTab';
-import CommentForm from '../components/Comment/Comment';
 import HeaderContainer from '../containers/common/HeaderContainer';
+// import RegisterForm1 from '../containers/Auth1/RegisterForm1';
+import RegisterForm from '../containers/Auth/RegisterForm';
+import CommentForm from '../containers/Comment/CommentForm';
+// import AuthForm1 from '../components/Auth/AuthForm1';
+
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +23,9 @@ const MainPage = () => {
           </div>
           <MainTab/>                    
           {/* <CommentForm/> */}
+      {/* <AuthForm1/> */}
+      <CommentForm/>
+      {/* <RegisterForm/> */}
         </div>
       </div>
       <Footer/>

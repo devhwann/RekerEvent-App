@@ -6,7 +6,7 @@ import * as commentCtrl from './comment.ctrl';
 const comment = new Router();
 
 // comments.get('/', commentsCtrl.list);
-comment.post('/write',  commentCtrl.writeComment);
+comment.post('/write',  commentCtrl.write);
 
 // const comment = new Router(); // /api/posts/:id
 // comments.get('/', commentsCtrl.read);

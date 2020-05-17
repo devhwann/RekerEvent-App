@@ -86,7 +86,7 @@ const ErrorMessage = styled.div`
 
   
 
-const CommentForm = ({ form, onChange, onSubmit, error }) => {
+const Comment = ({ form, onChange, onSubmit, error }) => {
   
   return (
     <CommentFormBlock>
@@ -107,4 +107,4 @@ const CommentForm = ({ form, onChange, onSubmit, error }) => {
   );
 };
 
-export default CommentForm;
+export default Comment;
