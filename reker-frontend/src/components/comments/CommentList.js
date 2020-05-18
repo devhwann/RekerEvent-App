@@ -54,10 +54,10 @@ const ErrorMessage = styled.div`
   
 
 const CommentList = ({ comment }) => {
-  const { user, title , _id} = comment;
+  // const { user, title , _id} = comment;
   return (
     <CommentListBlock>
-        <Link to={`/@${user.username}/${_id}`}>{title}</Link>
+        {/* <Link to={`/@${user.username}/${_id}`}>{title}</Link> */}
       
       
     
