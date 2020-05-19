@@ -10,7 +10,7 @@ export const write = ({ body }) =>
 
   export const listComment = ({ body }) => {
     // const queryString = qs.stringify({
-        body
+      client.post('/api/comment/list', { body });
     // });
-    return client.get(`/api/posts?${queryString}`);
+    // return client.get(`/api/posts?${queryString}`);
   };
