@@ -10,6 +10,11 @@ const Text = styled.div`
   padding: 1rem 0rem;
 `;
 
+const TabWrapFlex = styled.div`
+  display: flex;
+`;
+
+
 
 const MainTabContent = styled.div`
   button {
@@ -19,11 +24,11 @@ const MainTabContent = styled.div`
   //   font-weight: 600;
     width: 50%;
     cursor: pointer;
-  //   &:hover {
-  //     transition: 1s;
-  //     background: $oc-gray-2;
+     &:hover {
+       transition: 0.1s;
+       background: efefef;
     }
-  // } 
+   } 
 
   .tab-menu {
     display: flex;
@@ -55,26 +60,28 @@ const MainTab = () => {
           </Text>
         </Panel>
       </Tabs>
-      <Tabs>
+            <button>사전 등록</button>
+            <button>SNS</button>
+            <TabWrapFlex>
+            <EventSend/>
+            <SocialShare/>
+            </TabWrapFlex>
+      {/* <Tabs>
         <div className="tab-menu">
           <Tab>
-            <button>사전 등록</button>
           </Tab>
           <Tab>
-            <button>SNS</button>
           </Tab>
         </div>
         <Panel>
           <Text>
-            <EventSend/>
           </Text>
         </Panel>
         <Panel>
           <Text>
-            <SocialShare/>
           </Text>
         </Panel>
-      </Tabs>
+      </Tabs> */}
     </MainTabContent>
   );
 };

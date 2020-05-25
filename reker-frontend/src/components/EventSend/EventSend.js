@@ -23,7 +23,11 @@ const EventSend = () => {
           <br/>
        </p>
         <Button to="/event" cyan style={eventbtn}>
-          사전등록 하러가기
+          사전등록
+        </Button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button to="/register" cyan style={eventbtn}>
+          회원가입
         </Button>
     </div>
   );
