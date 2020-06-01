@@ -1,4 +1,20 @@
 .wrap {
+
+.btn-display {
+  @media only screen and (max-width: 600px) {
+    display: none;;
+  }
+
+}
+
+.btn-displayB {
+  @media only screen and (max-width: 600px) {
+    display: block;
+    
+  }
+
+}
+
   // display: flex;
   height: 950px;
   // margin-top: -1rem;

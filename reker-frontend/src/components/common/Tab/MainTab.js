@@ -12,6 +12,8 @@ const Text = styled.div`
 
 const TabWrapFlex = styled.div`
   display: flex;
+  
+  justify-content: space-evenly;
 `;
 
 
