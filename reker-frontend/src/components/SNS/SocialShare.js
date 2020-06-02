@@ -10,7 +10,8 @@ const cx = classNames.bind(styles);
 
 const eventbtn = {
   marginTop: "1.5rem",
-  margin: "0.5rem" 
+  margin: "0.5rem" ,
+
 };
 
 
@@ -21,18 +22,28 @@ const magin0 = {
 
 const EventBtnWrap = styled.div`{
 
-  @media only screen and (max-width: 600px) {
+  margin-top: 2.4rem;
+
+
+  @media only screen and (max-width: 600px) {    
     margin: 1.5rem 0;
   }  
 }
+
+}`
+
+const SocialShareWrap = styled.div`{
+    width:100%;
+    position: relative;
+
 }`
 
 
 
 const SocialShare = () => {
   return (
-    <div>
-           <p style={magin0}>Reker의 소셜 네트워크 입니다. 여러분들과 소통과 의견에 귀 기울이고 있습니다.</p>
+    <SocialShareWrap>
+      <p >Reker의 소셜 네트워크 입니다. 여러분들과 소통과 의견에 귀 기울이고 있습니다.</p>
       <FontAwesomeIcon icon={faInstagram}/>&nbsp; : &nbsp;Instagram
       <br/>
       <FontAwesomeIcon icon={faFacebook}/>&nbsp; : &nbsp;Facebook      
@@ -43,7 +54,7 @@ const SocialShare = () => {
           회원가입
         </Button>
     </EventBtnWrap>
-    </div>
+    </SocialShareWrap>
   );
 };
 

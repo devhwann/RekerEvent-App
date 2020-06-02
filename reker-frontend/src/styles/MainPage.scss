@@ -1,4 +1,6 @@
 .wrap {
+  ::-webkit-scrollbar { display: none !important; }
+  
 
 .btn-display {
   @media only screen and (max-width: 600px) {
@@ -9,33 +11,39 @@
 
 .btn-displayB {
   @media only screen and (max-width: 600px) {
-    display: block;
+    // display: block;
     
   }
+  
 
 }
 
   // display: flex;
-  height: 950px;
+  height: 1050px;
   // margin-top: -1rem;
   .container {
     overflow: auto; 
     background: $oc-gray-2;
-    width: 65%;
+    width: 80%;
     background: $oc-gray-0;
     margin: auto;
     -webkit-box-shadow: 0px 14px 26px -11px rgba(116,160,207,1);
     -moz-box-shadow: 0px 14px 26px -11px rgba(116,160,207,1);
     box-shadow: 0px 14px 26px -11px rgba(116,160,207,1);
     border-collapse: separate;
-    height: 750px;
+    height: 880px;
     padding: 1rem;
     margin-top: 2rem;
     -ms-overflow-style: none; // IE에서 스크롤바 감춤
+    margin-top: 6rem;
 
-    &::-webkit-scrollbar {
-      display: none important; // 윈도우 크롬 등
-    }
+  @media only screen and (max-width: 900px) {
+    margin-top: 2rem;
+    width: 65%;
+  }
+  
+  
+
     .brand-logo  {
       font-size: 2.5rem;
       color: #0f43ff;
@@ -53,7 +61,9 @@
   .content-wrap {
     // display: flex;
     text-align: center;
-    
+    &::-webkit-scrollbar {
+      display: none important; // 윈도우 크롬 등
+    }
   }
 
   .footer {
@@ -69,4 +79,8 @@
       }
     }
   }
+}
+
+.container {
+  ::-webkit-scrollbar { width: 0 !important }
 }
