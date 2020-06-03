@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeField,  eventregister } from '../../modules/auth';
+import { changeField, initializeForm,  eventregister } from '../../modules/auth';
 import EventAuthForm from '../../components/Event/EventAuthForm';
 // import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
@@ -61,12 +61,12 @@ const EventForm = ({ history }) => {
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
-  // useEffect(() => {
-  //   dispatch(initializeForm('eventregister'));
-  //   if (auth) {	
-  //     alert('로그아웃 후 사전등록이 가능합니다.')	
-  //   }
-  // }, [dispatch, auth]);
+  useEffect(() => {
+    dispatch(initializeForm('eventregister'));
+    if (auth) {	
+      alert('이미 사전등록되어있습니다.')	
+    }
+  }, [dispatch, auth]);
 
 
   // 회원가입 성공 / 실패 처리
@@ -74,11 +74,16 @@ const EventForm = ({ history }) => {
     
     if (authError) {
       //  추천인 ID가 공백일댸 
+      
       if (authError.response.status === 406) {
-          // console.log('sc공2백');
+          console.log('sc공2백');
           // console.log(auth);
           alert('사전등록 되었습니다.')
           history.push('/'); // 홈 화면으로 이동
+          // console.log('a')
+          console.log(auth);
+          console.log(event + 'a');
+          
       }else if (authError.response.status === 408) {
         setError('추천인 아이디가 존재하지 않습니다.');
         return;
@@ -91,11 +96,12 @@ const EventForm = ({ history }) => {
     if (auth) {
       alert('사전등록 되었습니다.')	      
       history.push('/'); // 홈 화면으로 이동	
-      console.log(event);
+      console.log(auth);
     }
     if (user) {
       alert('로그아웃 후 사전등록이 가능 합니다.')	      
-    }
+    }    
+    
     
 
   }, [auth, authError,  history, event, user]);

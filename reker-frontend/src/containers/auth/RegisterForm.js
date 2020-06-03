@@ -84,6 +84,11 @@ const RegisterForm = ({ history }) => {
       console.log(auth);
       dispatch(check());
     }
+
+    if (user) {
+      alert('이미 회원가입이 되어 있습니다.')	      
+    }
+
   }, [auth, authError, dispatch]);
 
   // user 값이 잘 설정되었는지 확인
