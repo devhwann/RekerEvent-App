@@ -61,8 +61,9 @@ const CommenForm = ({ history }) => {
       console.log('댓글 성공');
       console.log(comment);
       dispatch(check());
+      history.push('/'); // 홈 화면으로 이동	
     }
-  }, [comment, commentError, dispatch]);
+  }, [comment, commentError, dispatch, history]);
 
   // user 값이 잘 설정되었는지 확인
   useEffect(() => {
