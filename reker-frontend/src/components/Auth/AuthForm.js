@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import palette from '../../styles/lib/palette';
 import Button from '../common/Button';
 import { withUserAgent } from 'react-useragent';
+import { Form , Input } from 'antd'
 import queryString from 'query-string';
 
 
@@ -13,78 +14,26 @@ import queryString from 'query-string';
 
 
  
-const { Item } = Form;
 
-function Certification({ history, form, ua }) {
-  const { getFieldDecorator, validateFieldsAndScroll } = form;
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    
-    validateFieldsAndScroll((error, values) => {
-      if (!error) {
-        /* 가맹점 식별코드 */
-        const userCode = 'imp40961860';
-        /* 결제 데이터 */
-        const {
-          merchant_uid,
-          name,
-          phone,
-          // min_age,
-        } = values;
-
-        const data = {
-          merchant_uid,
-        };
-
-        if (name) {
-          data.name = name;
-        }
-        if (phone) {
-          data.phone = phone;
-        }
-        // if (min_age) {
-        //   data.min_age = min_age;
-        // }
-
-        if (isReactNative()) {
-          /* 리액트 네이티브 환경일때 */
-          const params = {
-            userCode,
-            data,
-            type: 'certification', // 결제와 본인인증을 구분하기 위한 필드
-          };
-          const paramsToString = JSON.stringify(params);
-          window.ReactNativeWebView.postMessage(paramsToString);
-        } else {
-          /* 웹 환경일때 */
-          const { IMP } = window;
-          IMP.init(userCode);
-          IMP.certification(data, callback);
-        }
-      }
-    });
-  }
-}
 
   /* 본인인증 후 콜백함수 */
   function callback(response) {
     const query = queryString.stringify(response);
-    history.push(`/certification/result?${query}`);
+    // history.push(`../../containers/Auth/RegisterForm/../result?${query}`);
   }
 
-  function isReactNative() {
-    /*
-      리액트 네이티브 환경인지 여부를 판단해
-      리액트 네이티브의 경우 IMP.certification()을 호출하는 대신
-      iamport-react-native 모듈로 post message를 보낸다
+  // function isReactNative() {
+  //   /*
+  //     리액트 네이티브 환경인지 여부를 판단해
+  //     리액트 네이티브의 경우 IMP.certification()을 호출하는 대신
+  //     iamport-react-native 모듈로 post message를 보낸다
 
-      아래 예시는 모든 모바일 환경을 리액트 네이티브로 인식한 것으로
-      실제로는 user agent에 값을 추가해 정확히 판단해야 한다
-    */
-    if (ua.mobile) return true;
-    return false;
-  }
+  //     아래 예시는 모든 모바일 환경을 리액트 네이티브로 인식한 것으로
+  //     실제로는 user agent에 값을 추가해 정확히 판단해야 한다
+  //   */
+  //   if (ua.mobile) return true;
+  //   return false;
+  // }
 
 const AuthFormBlock = styled.div`
   h3 {
@@ -158,7 +107,77 @@ const ErrorMessage = styled.div`
   margin-top: 1rem;
 `;
 
-const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
+
+
+
+const AuthForm = ({ history,  ua ,type, form, onChange, onSubmit, error }) => {
+
+  const { Item } = Form;
+  const { getFieldDecorator, validateFieldsAndScroll } = form;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    validateFieldsAndScroll((error, values) => {
+      if (!error) {
+        /* 가맹점 식별코드 */
+        const userCode = 'imp40961860';
+        /* 결제 데이터 */
+        const {
+          merchant_uid,
+          name,
+          phone,
+          // min_age,
+        } = values;
+
+        const data = {
+          merchant_uid,
+        };
+
+        if (name) {
+          data.name = name;
+        }
+        if (phone) {
+          data.phone = phone;
+        }
+        // if (min_age) {
+        //   data.min_age = min_age;
+        // }
+
+        if (isReactNative()) {
+          /* 리액트 네이티브 환경일때 */
+          const params = {
+            userCode,
+            data,
+            type: 'certification', // 결제와 본인인증을 구분하기 위한 필드
+          };
+          const paramsToString = JSON.stringify(params);
+          window.ReactNativeWebView.postMessage(paramsToString);
+        }
+        
+        else {
+          /* 웹 환경일때 */
+          const { IMP } = window;
+          IMP.init(userCode);
+          IMP.certification(data, callback);
+        }
+      }
+    });
+  }
+  function isReactNative() {
+    /*
+      리액트 네이티브 환경인지 여부를 판단해
+      리액트 네이티브의 경우 IMP.certification()을 호출하는 대신
+      iamport-react-native 모듈로 post message를 보낸다
+
+      아래 예시는 모든 모바일 환경을 리액트 네이티브로 인식한 것으로
+      실제로는 user agent에 값을 추가해 정확히 판단해야 한다
+    */
+    if (ua.mobile) return true;
+    return false;
+  }
+
+
   const text = textMap[type];
   return (
     <AuthFormBlock>
@@ -189,6 +208,11 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.passwordConfirm}
           />
+      <form onSubmit={handleSubmit}>
+
+      {getFieldDecorator('phone')(
+        <Item/>
+        )}
           <StyledInput
             autoComplete="phone"
             name="phone"
@@ -197,6 +221,9 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.phone}
           />
+      
+          <Button htmlType="submit"> 본인인증</Button>
+        </form>
           <StyledInput
             autoComplete="address"
             name="address"
@@ -205,6 +232,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.address}
           />          
+          
           </div>
         )}
         {type === 'register' && (
@@ -486,5 +514,6 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
     </AuthFormBlock>
   );
 };
+const AuthPass = Form.create({ name: 'AuthForm' })(AuthForm);
 
-export default AuthForm;
+export default withUserAgent(withRouter(AuthPass));
