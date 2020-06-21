@@ -5,8 +5,9 @@ import RegisterPage from './pages/RegisterPage';
 import MainPage from './pages/MainPage';
 import EventPage from './pages/EventPage';
 import rePage from './pages/rePage';
-import Certification from './components/Certification';
-import CertificationForm from './components/CertificationResult';
+import AuthFomr1 from './components/AuthFomr1';
+import CertificationResult from './components/CertificationResult';
+import AuthForm from './components/Auth/AuthForm';
 
 // import './App.css';
 
@@ -18,7 +19,9 @@ const App = () => {
       <Route component={RegisterPage} path="/register" />
       <Route component={EventPage} path="/event" />
       <Route component={rePage} path="/certification" />
-      <Route exact path="/certification" component={Certification} /> 
+      <Route exact path="/AuthFomr1" component={AuthFomr1} /> 
+      <Route exact path="/AuthForm" component={AuthForm} /> 
+      <Route exact path="/certification/result" component={CertificationResult} />
       
     </>
   );

@@ -7,7 +7,7 @@ import queryString from 'query-string';
 
 const { Item } = Form;
 
-function Certification({ history, form, ua }) {
+const AuthFomr1 = ({ history,  ua ,type, form, onChange, onSubmit, error }) => {
   const { getFieldDecorator, validateFieldsAndScroll } = form;
 
   function handleSubmit(e) {
@@ -79,7 +79,7 @@ function Certification({ history, form, ua }) {
 
   return (
     <Wrapper>
-      <Header>아임포트 본인인증 테스트</Header>
+      <Header>아임포트 본인인1증 테스트</Header>
       <FormContainer onSubmit={handleSubmit}>
         <Item>
           {getFieldDecorator('merchant_uid', {
@@ -177,6 +177,9 @@ const FormContainer = styled(Form)`
   }
 `;
 
-const CertificationForm = Form.create({ name: 'certification' })(Certification);
+// const CertificationForm = () => {  
+// }(Certification);
 
-export default withUserAgent(withRouter(CertificationForm));
+const AuthFomr12 = Form.create({ name: 'AuthFomr1' })(AuthFomr1);
+
+export default withUserAgent(withRouter(AuthFomr12));

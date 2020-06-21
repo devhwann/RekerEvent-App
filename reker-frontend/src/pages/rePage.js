@@ -1,12 +1,12 @@
 import React from 'react';
 import AuthTemplate from '../components/Auth/AuthTemplate';
 import EventForm from '../containers/Auth/EventForm';
-import Certification from '../components/Certification';
+import AutnFomr1 from '../components/AuthFomr1';
 
 
 const rePage = () => {
   return (
-    <Certification/>
+    <AutnFomr1/>
   );
 };
 
