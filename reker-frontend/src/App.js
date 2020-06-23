@@ -18,7 +18,7 @@ const App = () => {
       <Route component={LoginPage} path="/login" />
       <Route component={RegisterPage} path="/register" />
       <Route component={EventPage} path="/event" />
-      <Route component={rePage} path="/certification" />
+      <Route component={rePage} path="/test" />
       <Route exact path="/AuthFomr1" component={AuthFomr1} /> 
       <Route exact path="/AuthForm" component={AuthForm} /> 
       <Route exact path="/certification/result" component={CertificationResult} />
