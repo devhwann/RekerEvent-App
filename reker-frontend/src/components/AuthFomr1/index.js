@@ -148,21 +148,21 @@ const { Item } = Form;
           data.min_age = min_age;
         }
 
-        if (isReactNative()) {
-          /* 리액트 네이티브 환경일때 */
-          const params = {
-            userCode,
-            data,
-            type: 'certification', // 결제와 본인인증을 구분하기 위한 필드
-          };
-          const paramsToString = JSON.stringify(params);
-          window.ReactNativeWebView.postMessage(paramsToString);
-        } else {
-          /* 웹 환경일때 */
-          const { IMP } = window;
-          IMP.init(userCode);
-          IMP.certification(data, callback);
-        }
+        // if (isReactNative()) {
+        //   /* 리액트 네이티브 환경일때 */
+        //   const params = {
+        //     userCode,
+        //     data,
+        //     type: 'certification', // 결제와 본인인증을 구분하기 위한 필드
+        //   };
+        //   const paramsToString = JSON.stringify(params);
+        //   window.ReactNativeWebView.postMessage(paramsToString);
+        // } else {
+        //   /* 웹 환경일때 */
+        //   const { IMP } = window;
+        //   IMP.init(userCode);
+        //   IMP.certification(data, callback);
+        // }
       }
     });
     function callback(response) {

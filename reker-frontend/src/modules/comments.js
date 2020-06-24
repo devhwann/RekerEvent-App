@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
-import * as commentsAPI from '../lib/api/comment';
+import * as commentAPI from '../lib/api/comment';
 import { takeLatest } from 'redux-saga/effects';
 
 const [
@@ -16,7 +16,7 @@ export const listComments = createAction(
   ({ tag, username, page }) => ({ tag, username, page }),
 );
 
-const listCommentsSaga = createRequestSaga(LIST_COMMENTS, commentsAPI.listComments);
+const listCommentsSaga = createRequestSaga(LIST_COMMENTS, commentAPI.listComments);
 export function* commentsSaga() {
   yield takeLatest(LIST_COMMENTS, listCommentsSaga);
 }

@@ -8,7 +8,7 @@ export const write = ({ body }) =>
 
   // export const readPost = id => client.get(`/api/posts/${id}`);
 
-  export const listComments = ({ body }) => {
+  export const listComment = ({ body }) => {
     // const queryString = qs.stringify({
       client.post('/api/comment/listComments', { body });
     // });

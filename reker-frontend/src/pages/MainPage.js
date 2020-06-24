@@ -7,7 +7,7 @@ import HeaderContainer from '../containers/common/HeaderContainer';
 // import RegisterForm1 from '../containers/Auth1/RegisterForm1';
 import RegisterForm from '../containers/Auth/RegisterForm';
 import CommentForm from '../containers/Comment/CommentForm';
-import CommentList from '../components/comments/CommentList';
+import CommentList from '../containers/Comments/CommentListContainer';
 // import AuthForm1 from '../components/Auth/AuthForm1';
 
 
