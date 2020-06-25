@@ -51,9 +51,27 @@ const ErrorMessage = styled.div`
   margin-top: 1rem;
 `;
 
+// const CommentItem = styled.div`
   
+// `
+  
+const CommentItem = ({ comment }) => {
+  const { publishedDate, user, body, _id } = comment;
+  return (
+    <div>
+      <h2>
+        {/* <Link to={`/@${user.username}/${_id}`}>{title}</Link> */}
+      </h2>
+        {/* // username={user.username}
+        // publishedDate={new Date(publishedDate)} */}
+      {/* <Tags tags={tags} /> */}
+      <p>{body}</p>
+    </div>
+  )
+}
 
 const CommentList = ({ comment }) => {
+
  const { body} = comment;
   return (
     <CommentListBlock>
