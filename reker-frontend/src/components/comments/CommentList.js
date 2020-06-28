@@ -72,11 +72,11 @@ const CommentItem = ({ comment }) => {
 
 const CommentList = ({ comment }) => {
 
- const { body} = comment;
+//  const { body} = comment;
   return (
     <CommentListBlock>
         {/* <Link to={`/@${user.username}/${_id}`}>{title}</Link> */}
-          <p>{body}</p>
+          {/* <p>{body}</p> */}
       
     
       </CommentListBlock>

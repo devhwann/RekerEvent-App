@@ -159,7 +159,7 @@ const AuthForm = ({ history,  ua ,type, form, onChange, onSubmit, error }) => {
             value={form.phone}
           />
       
-          <Button htmlType="submit"> 본인인증</Button>
+          {/* <Button htmlType="submit"> 본인인증</Button> */}
           <StyledInput
             autoComplete="address"
             name="address"
