@@ -9,12 +9,34 @@ import Button from '../common/Button';
  */
 
 const CommentListBlock = styled.div`
+  // display:flex;
+  // justify-content:space-evenly;
   h3 {
     margin: 0;
     color: ${palette.gray[8]};
     margin-bottom: 1rem;  
   }
 `;
+
+
+const CommentCard = styled.div`
+  width: 40%;
+  height:150px; 
+  background:#fff;
+  box-shadow: 0px 14px 26px -11px #000;
+  text-align:left;
+  padding: 1rem;
+
+  p {
+    display:flex;
+    justify-content:space-between;
+    span {
+      color: ${palette.gray[5]};
+    }
+  }
+`;
+
+
 
 /**
  * 스타일링된 input
@@ -75,6 +97,24 @@ const CommentList = ({ comment }) => {
 //  const { body} = comment;
   return (
     <CommentListBlock>
+    {/* <h2>댓글</h2> */}
+        <CommentCard>
+          <p>돌담 <span>2020-06-29</span></p>          
+          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
+        </CommentCard>
+        <CommentCard>
+          <p>돌담 <span>2020-06-29</span></p>          
+          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
+        </CommentCard>
+        <CommentCard>
+          <p>돌담 <span>2020-06-29</span></p>          
+          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
+        </CommentCard>
+        {/* 2개의 Card를 묶어서 거거다가 flex를 준다. 반복. */}
+        {/* <CommentCard>
+
+        </CommentCard> */}
+
         {/* <Link to={`/@${user.username}/${_id}`}>{title}</Link> */}
           {/* <p>{body}</p> */}
       
