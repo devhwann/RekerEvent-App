@@ -16,12 +16,11 @@ const CommentListContainer = ({ location, match }) => {
     }),
   );
   useEffect(() => {
-    const { username } = match.params;
-    const { tag, page, body } = qs.parse(location.search, {
+    const { tag, page, body, username } = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-    dispatch(listComments({ body }));
-  }, [dispatch, location.search, match.params]);
+    dispatch(listComments({ body, username }));
+  }, [dispatch ]);
 
   return (
     <CommentList

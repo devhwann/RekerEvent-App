@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
 });
 
 export function* rootSaga() {
-  yield all([authSaga(), userSaga(), commentSaga(),commentSaga() ]);
+  yield all([authSaga(), userSaga(), commentSaga(),commentsSaga() ]);
 }
 
 export default rootReducer;

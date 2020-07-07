@@ -5,7 +5,6 @@ import Footer from '../components/common/Footer/Footer';
 import MainTab from '../components/common/Tab/MainTab';
 import HeaderContainer from '../containers/common/HeaderContainer';
 // import RegisterForm1 from '../containers/Auth1/RegisterForm1';
-import RegisterForm from '../containers/Auth/RegisterForm';
 import CommentForm from '../containers/Comment/CommentForm';
 import CommentList from '../containers/Comments/CommentListContainer';
 // import AuthForm1 from '../components/Auth/AuthForm1';
@@ -25,7 +24,7 @@ const MainPage = () => {
           <MainTab/>                    
       {/* <AuthForm1/> */}
           <CommentList/>
-      <CommentForm/>
+      {/* <CommentForm/> */}
       {/* <RegisterForm/> */}
         </div>
       </div>

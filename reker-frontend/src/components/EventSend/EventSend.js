@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
-import classNames from "classnames/bind";
-import styles from '../../styles/MainPage.scss'
+// import classNames from "classnames/bind";
 
-const cx = classNames.bind(styles);
+
+// const cx = classNames.bind(styles);
 
 const eventbtn = {
   marginTop: "1.5rem",

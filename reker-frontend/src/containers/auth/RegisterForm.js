@@ -4,7 +4,7 @@ import { changeField, initializeForm, register } from '../../modules/auth';
 import AuthForm from '../../components/Auth/AuthForm';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
+// import queryString from 'query-string';
 
 
 const RegisterForm = ({ history,ua }) => {
@@ -90,7 +90,7 @@ const RegisterForm = ({ history,ua }) => {
       alert('이미 회원가입이 되어 있습니다.')	      
     }
 
-  }, [auth, authError, dispatch]);
+  }, [auth, authError, dispatch, user]);
 
   // user 값이 잘 설정되었는지 확인
   useEffect(() => {

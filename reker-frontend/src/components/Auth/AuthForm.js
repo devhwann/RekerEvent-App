@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import palette from '../../styles/lib/palette';
 import Button from '../common/Button';
 import { withUserAgent } from 'react-useragent';
-import { Form , Input } from 'antd'
+import { Form } from 'antd'
 import queryString from 'query-string';
 
 
@@ -16,10 +16,7 @@ import queryString from 'query-string';
  
 
   /* 본인인증 후 콜백함수 */
-  function callback(response) {
-    const query = queryString.stringify(response);
-    // history.push(`../../containers/Auth/RegisterForm/../result?${query}`);
-  }
+  
 
   // function isReactNative() {
   //   /*
