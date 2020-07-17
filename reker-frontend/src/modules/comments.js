@@ -13,7 +13,7 @@ const [
 
 export const listComments = createAction(
   LIST_COMMENTS,
-  ({ tag, username, page }) => ({ tag, username, page }),
+  ({ body, username ,page }) => ({ body, username ,page }),
 );
 
 const listCommentsSaga = createRequestSaga(LIST_COMMENTS, commentAPI.listComments);

@@ -55,13 +55,13 @@ const comment = handleActions(
       [form]: initialState[form],
       commentError: null, // 폼 전환 시 회원 인증 에러 초기화
     }),
-    // 회원가입 성공
+    // 댓글 작성 성공
     [WRITE_SUCCESS]: (state, { payload: comment }) => ({
       ...state,
       commentError: null,
       comment,
     }),
-    // 회원가입 실패
+    // 댓글 작성 실패
     [WRITE_FAILURE]: (state, { payload: error }) => ({
       ...state,
       commentError: error,

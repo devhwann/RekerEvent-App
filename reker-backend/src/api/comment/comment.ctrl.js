@@ -83,47 +83,117 @@ export const write = async ctx => {
 // /*
 //   GET /api/commets?username=&tag=&page=
 // */
-export const list = async ctx => {
-  // query 는 문자열이기 때문에 숫자로 변환해주어야합니다.
-  // 값이 주어지지 않았다면 1 을 기본으로 사용합니다.
-  const page = parseInt(ctx.query.page || '1', 10);
+// export const listComments = async ctx => {
+//   // query 는 문자열이기 때문에 숫자로 변환해주어야합니다.
+//   // 값이 주어지지 않았다면 1 을 기본으로 사용합니다.
+//   const page = parseInt(ctx.query.page || '1', 10);
 
-  if (page < 1) {
-    ctx.status = 400;
-    return;
-  }
+//   if (page < 1) {
+//     ctx.status = 400;
+//     return;
+//   }
 
-  const { tag, username } = ctx.query;
-  // tag, username 값이 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
-  const query = {
-    ...(username ? { 'user.username': username } : {}),
-    ...(tag ? { tags: tag } : {}),
-  };
+//   const { tag, username } = ctx.query;
+//   // tag, username 값이 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
+//   const query = {
+//     ...(username ? { 'user.username': username } : {}),
+//     ...(tag ? { tags: tag } : {}),
+//   };
+
+//   try {
+//     const comment = await comment.find(query)
+//       .sort({ _id: -1 })
+//       .limit(6)
+//       .skip((page - 1) * 6)
+//       .lean()
+//       .exec();
+//     const commentCount = await comment.countDocuments(query).exec();
+//     ctx.set('Last-Page', Math.ceil(commentCount / 6));
+//     ctx.body = comment.map(comment => ({
+//       ...comment,
+//       body: removeHtmlAndShorten(comment.body),
+//     }));
+//   } catch (e) {
+//     ctx.throw(500, e);
+//   }
+// };
+
+
+
+// export const list = async ctx => {
+//   // query 는 문자열이기 때문에 숫자로 변환해주어야합니다.
+//   // 값이 주어지지 않았다면 1 을 기본으로 사용합니다.
+//   const page = parseInt(ctx.query.page || '1', 10);
+
+//   if (page < 1) {
+//     ctx.status = 400;
+//     return;
+//   }
+
+//   const { tag, username } = ctx.query;
+//   // tag, username 값이 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
+//   const query = {
+//     ...(username ? { 'user.username': username } : {}),
+//     ...(tag ? { tags: tag } : {}),
+//   };
+
+//   try {
+//     const comments = await comments.find(query)
+//       .sort({ _id: -1 })
+//       .limit(6)
+//       .skip((page - 1) * 6)
+//       .lean()
+//       .exec();
+//     const commentCount = await Comment.countDocuments(query).exec();
+//     ctx.set('Last-Page', Math.ceil(commentCount / 6));
+//     ctx.body = comments.map(comment => ({
+//       ...comment,
+//       body: removeHtmlAndShorten(comment.body),
+//     }));
+//   } catch (e) {
+//     ctx.throw(500, e);
+//   }
+// };
+
+
+/*
+  GET /api/comment/:id
+*/
+export const read = async ctx => {
+
+  ctx.body = ctx.state.comment;  
+  
+};
+
+export const list = async ctx => {  
 
   try {
-    const comment = await comment.find(query)
-      .sort({ _id: -1 })
-      .limit(6)
-      .skip((page - 1) * 6)
-      .lean()
-      .exec();
-    const commentCount = await comment.countDocuments(query).exec();
-    ctx.set('Last-Page', Math.ceil(commentCount / 6));
-    ctx.body = comment.map(comment => ({
-      ...comment,
-      body: removeHtmlAndShorten(comment.body),
-    }));
+  const comment = await Comment.find().exec();
+  ctx.body = comment;
   } catch (e) {
-    ctx.throw(500, e);
+  return ctx.throw(500, e);  
+  
+}
+};
+
+
+export const listComments = async ctx => {
+
+  try {
+  const comments = await Comment.find().exec();
+  ctx.body = comments.map(comment => ({
+          ...comment,
+          body: removeHtmlAndShorten(comment.body),
+        }));
+  } catch (e) {
+  return ctx.throw(500, e);    
   }
 };
 
 /*
   GET /api/comment/:id
 */
-export const read = async ctx => {
-  ctx.body = ctx.state.comment;
-};
+
 
 // /*
 //   DELETE /api/comment/:id

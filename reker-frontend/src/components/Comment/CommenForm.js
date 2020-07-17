@@ -94,7 +94,7 @@ const Comment = ({ form, onChange, onSubmit, error }) => {
       <StyledInput
           autoComplete="body"
           name="body"
-          placeholder="comment write"
+          placeholder="댓글을 입력해주세요."
           onChange={onChange}
           value={form.body}
         />

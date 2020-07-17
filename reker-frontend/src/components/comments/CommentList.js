@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import palette from '../../styles/lib/palette'
 import Button from '../common/Button';
+import Axios from 'axios'
 
 /**
  * 회원가입 또는 로그인 폼을 보여줍니다.
@@ -11,6 +12,7 @@ import Button from '../common/Button';
 const CommentListBlock = styled.div`
   // display:flex;
   // justify-content:space-evenly;
+  padding-bottom: 1.5rem;
   h3 {
     margin: 0;
     color: ${palette.gray[8]};
@@ -26,6 +28,7 @@ const CommentCard = styled.div`
   box-shadow: 0px 14px 26px -11px #000;
   text-align:left;
   padding: 1rem;
+  margin-top:1.5rem;
 
   p {
     display:flex;
@@ -92,19 +95,34 @@ const CommentItem = ({ comment }) => {
   )
 }
 
-const CommentList = ({ comments, error,loading }) => {
+
+
+
+const CommentList = ({ comments, error,loading  }) => {
+  const [data, setData, setComments ] = useState({ comments : []})
   if (error) {
     return <CommentListBlock>에러가 발생했습니다.</CommentListBlock>;
   }
 
+
+
+// useEffect(async () => {
+ const fetchData = async () => {
+  try {
+    const response = await Axios.get(
+      `http://localhost:4000/api/comment/list`,
+    );
+    setComments(response.data.comments);
+  } catch (e) {
+    console.log(e);
+  };
+};
+fetchData()
+// })
 //  const { body} = comment;
   return (
     <CommentListBlock>
     {/* <h2>댓글</h2> */}
-        {/* <CommentCard>
-          <p>돌담 <span>2020-06-29</span></p>          
-          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
-        </CommentCard>
         <CommentCard>
           <p>돌담 <span>2020-06-29</span></p>          
           <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
@@ -112,19 +130,24 @@ const CommentList = ({ comments, error,loading }) => {
         <CommentCard>
           <p>돌담 <span>2020-06-29</span></p>          
           <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
-        </CommentCard> */}
+        </CommentCard>
+        <CommentCard>
+          <p>돌담 <span>2020-06-29</span></p>          
+          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
+        </CommentCard>
         {/* 2개의 Card를 묶어서 거거다가 flex를 준다. 반복. */}
         {/* <CommentCard>
 
         </CommentCard> */}
 
-        {!loading && comments && (
+        {/* {!loading && comments && (
         <div>
       {comments.map(comment => (
-        <CommentItem comment={comment} />
+        // <CommentItem comment={comment}  key={comment.comments}/>
+        <CommentItem comment={comment}  key={comment._id}/>
       ))}
       </div>
-      )}
+      )} */}
             {/*  map of null 은 위의 loading 조건식이 필요함. */}
     
       </CommentListBlock>

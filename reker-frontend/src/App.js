@@ -14,7 +14,7 @@ import AuthForm from './components/Auth/AuthForm';
 const App = () => {
   return (
     <>
-      <Route component={MainPage} path="/" exact />
+      <Route component={MainPage} path={['/@:username', '/']} exact />
       <Route component={LoginPage} path="/login" />
       <Route component={RegisterPage} path="/register" />
       <Route component={EventPage} path="/event" />

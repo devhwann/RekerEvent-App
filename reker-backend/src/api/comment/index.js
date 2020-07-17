@@ -7,7 +7,9 @@ const comment = new Router();
 
 // comments.get('/', commentsCtrl.list);
 comment.post('/write',  commentCtrl.write);
-comment.get('/', commentCtrl.read)
+comment.get('/listComments',  commentCtrl.listComments);
+comment.get('/list',  commentCtrl.list);
+comment.get('/', commentCtrl.list)
 
 // const comment = new Router(); // /api/posts/:id
 // comments.get('/', commentsCtrl.read);
