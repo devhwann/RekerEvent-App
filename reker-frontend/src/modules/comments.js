@@ -32,7 +32,7 @@ const comments = handleActions(
     [LIST_COMMENTS_SUCCESS]: (state, { payload: comments, meta: response }) => ({
       ...state,
       comments,
-      lastPage: parseInt(response.headers['last-page'], 10), // 문자열을 숫자로 변환
+      // lastPage: parseInt(response.headers['last-page'], 10), // 문자열을 숫자로 변환
     }),
     [LIST_COMMENTS_FAILURE]: (state, { payload: error }) => ({
       ...state,

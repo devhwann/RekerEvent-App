@@ -28,7 +28,3 @@ export const write = ({ body }) =>
     return client.get(`/api/comment?${queryString}`);
   };
 
-Axios.get(
-          '/api/comment/list'
-      );
-      

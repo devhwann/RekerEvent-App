@@ -6,8 +6,8 @@ import MainTab from '../components/common/Tab/MainTab';
 import HeaderContainer from '../containers/common/HeaderContainer';
 // import RegisterForm1 from '../containers/Auth1/RegisterForm1';
 import CommentForm from '../containers/Comment/CommentForm';
-// import CommentList from '../containers/Comments/CommentListContainer';
-import CommentList from '../components/comments/CommentList';
+import CommentList from '../containers/Comments/CommentListContainer';
+// import CommentList from '../components/comments/CommentList';
 // import AuthForm1 from '../components/Auth/AuthForm1';
 
 

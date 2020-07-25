@@ -16,10 +16,12 @@ const CommentListContainer = ({ location, match ,body, username }) => {
       user: user.user,
     }),
   );
-  // useEffect(() => {
-    // const { tag, page, body, username } = qs.parse(location.search, {
-    //   ignoreQueryPrefix: true,
-    // });
+  useEffect(() => {
+    const { body, username } = qs.parse(location.search, {
+      // ignoreQueryPrefix: true,
+    });
+    dispatch(listComments({ body, username }));
+    }, [dispatch ]);
 
 // const fetchData = async () => {
 //   try {
@@ -35,8 +37,6 @@ const CommentListContainer = ({ location, match ,body, username }) => {
 
 // }, []);
 
-//     dispatch(listComments({ body, username }));
-//   }, [dispatch ]);
 // const [data, setData, setComments ] = useState({ hits : []})
 
      
@@ -46,7 +46,6 @@ const CommentListContainer = ({ location, match ,body, username }) => {
       loading={loading}
       error={error}
       comments={comments}
-      showWriteButton={user}
     />
   );
 };

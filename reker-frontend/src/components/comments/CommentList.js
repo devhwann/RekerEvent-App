@@ -82,16 +82,12 @@ const ErrorMessage = styled.div`
   
 const CommentItem = ({ comment }) => {
   const { publishedDate, user, body, _id } = comment;
-  return (
-    <div>
-      <h2>
-        {/* <Link to={`/@${user.username}/${_id}`}>{title}</Link> */}
-      </h2>
-        {/* // username={user.username}
-        // publishedDate={new Date(publishedDate)} */}
-      {/* <Tags tags={tags} /> */}
-      <p>{body}</p>
-    </div>
+  return (    
+
+<CommentCard>
+<p> {_id} <span> {publishedDate} </span></p>          
+<p>{body}</p>
+</CommentCard>
   )
 }
 
@@ -106,48 +102,25 @@ const CommentList = ({ comments, error,loading  }) => {
 
 
 
-// useEffect(async () => {
- const fetchData = async () => {
-  try {
-    const response = await Axios.get(
-      `http://localhost:4000/api/comment/list`,
-    );
-    setComments(response.data.comments);
-  } catch (e) {
-    console.log(e);
-  };
-};
-fetchData()
+// useEffect(async () => { 
 // })
 //  const { body} = comment;
   return (
     <CommentListBlock>
-    {/* <h2>댓글</h2> */}
-        <CommentCard>
-          <p>돌담 <span>2020-06-29</span></p>          
-          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
-        </CommentCard>
-        <CommentCard>
-          <p>돌담 <span>2020-06-29</span></p>          
-          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
-        </CommentCard>
-        <CommentCard>
-          <p>돌담 <span>2020-06-29</span></p>          
-          <p>너무 기대가 되는 프로세스 입니다. 앞으로도 정말 많은 행보와 기대를 걸고 투자를 합니다 ! 그리고 이 투자에 성공에 기원을 기도합니다.</p>
-        </CommentCard>
+    {/* <h2>댓글</h2> */}      
         {/* 2개의 Card를 묶어서 거거다가 flex를 준다. 반복. */}
         {/* <CommentCard>
 
         </CommentCard> */}
 
-        {/* {!loading && comments && (
+        {!loading && comments && (
         <div>
       {comments.map(comment => (
         // <CommentItem comment={comment}  key={comment.comments}/>
         <CommentItem comment={comment}  key={comment._id}/>
       ))}
       </div>
-      )} */}
+      )}
             {/*  map of null 은 위의 loading 조건식이 필요함. */}
     
       </CommentListBlock>
