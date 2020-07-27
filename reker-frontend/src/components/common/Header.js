@@ -29,6 +29,13 @@ const Wrapper = styled(Responsive)`
     display: flex;
     align-items: center;
   }
+
+  @media only screen and (max-width: 600Px) {
+    img {
+       width: 100px;
+      }
+  }
+
 `;
 
 /**
@@ -49,7 +56,7 @@ const Header = ({ user, onLogout }) => {
       <HeaderBlock>
         <Wrapper>
           <Link to="/" className="logo">
-            Reker
+            <img src="brand-logo.jpg" alt="" width="150px"/>
           </Link>
           {user ? (
             <div className="right">

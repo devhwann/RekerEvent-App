@@ -22,11 +22,14 @@ const magin0 = {
 
 const EventBtnWrap = styled.div`{
 
-  margin-top: 2.4rem;
+  // margin-top: 2.4rem;
+  width: 100%;
+  position:absolute;
+  bottom: -30px;
 
 
   @media only screen and (max-width: 600px) {    
-    margin: 1.5rem 0;
+    // margin: 1.5rem 0;
   }  
 }
 
@@ -35,6 +38,7 @@ const EventBtnWrap = styled.div`{
 const SocialShareWrap = styled.div`{
     width:100%;
     position: relative;
+    hegight:250px;
 
 }`
 

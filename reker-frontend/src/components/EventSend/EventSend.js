@@ -12,26 +12,39 @@ const eventbtn = {
 };
 
 
+
 const EventBtnWrap = styled.div`{
 
-  @media only screen and (max-width: 600px) {
-    margin-top:4rem;
+  @media only screen and (max-width: 1024px) {
+    // margin-top: 4.9rem;
   }  
+  @media only screen and (max-width: 600Px) {
+    // margin-top: 2.6rem;
+  }
+  width: 100%;
+  position:absolute;
+  bottom: -30px;
 }
 }`
 
 const EventContent = styled.p`{
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1024px) {
     display:none;
+  }
+  @media only screen and (max-width: 600Px) {
+    display:none;
+
   }
 
 }`
 
-const EventSendWrap = styled.p`{
+const EventSendWrap = styled.div`{
 
   width:100%;
   position: relative;
+  hegight:250px;
+
 
 }`
 
@@ -41,9 +54,9 @@ const EventSendWrap = styled.p`{
 const EventSend = () => {
   return (
     <EventSendWrap>
-       현재 새로 오픈할 실시간 채용 프로세스 Reker 의 사전등록을 받고 있습니다. 
+      <p>현재 새로 오픈할 실시간 채용 프로세스 Reker 의 사전등록을 받고 있습니다. 
        
-       사전등록시 다양한 혜택이 제공 됩니다.
+       사전등록시 다양한 혜택이 제공 됩니다.</p>
        
       <EventContent>          
           - 포인트 1000 증가           
@@ -53,14 +66,13 @@ const EventSend = () => {
           - 구인시 엄청난 혜택 증정
           <br/>
        </EventContent>
+       <div style="">
        <EventBtnWrap>
         <Button to="/event" cyan style={eventbtn}>
           사전등록
-        </Button>        
-        {/* <Button to="/register" cyan style={eventbtn} className={cx('btn-display')}>
-          회원가입
-        </Button> */}
+        </Button>                
         </EventBtnWrap>
+        </div>
     </EventSendWrap>
   );
 };

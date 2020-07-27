@@ -36,6 +36,7 @@ const CommenForm = ({ history }) => {
       setError('빈 칸을 입력하세요.');
       return;
     }
+    
 
     dispatch(write({ body }));
     
@@ -58,10 +59,9 @@ const CommenForm = ({ history }) => {
     }
 
     if (comment) {
-      console.log('댓글 성공');
       console.log(comment);
-      dispatch(check());
-      history.push('/'); // 홈 화면으로 이동	
+      window.location.reload(false);
+      // dispatch(check());
     }
   }, [comment, commentError, dispatch, history]);
 

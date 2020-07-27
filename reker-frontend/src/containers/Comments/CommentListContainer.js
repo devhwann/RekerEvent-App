@@ -8,6 +8,8 @@ import Axios from 'axios';
 
 const CommentListContainer = ({ location, match ,body, username }) => {
   const dispatch = useDispatch();
+  // const { user } = useSelector(({ user }) => ({ user: user.user }));
+
   const { comments, error, loading, user } = useSelector(
     ({ comments, loading, user }) => ({
       comments: comments.comments,
@@ -46,6 +48,7 @@ const CommentListContainer = ({ location, match ,body, username }) => {
       loading={loading}
       error={error}
       comments={comments}
+      user={user}
     />
   );
 };

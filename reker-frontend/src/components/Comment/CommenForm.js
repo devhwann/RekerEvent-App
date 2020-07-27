@@ -31,13 +31,14 @@ const Privacy = styled.div`
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
-  border-bottom: 1px solid ${palette.gray[5]};
+  // border-bottom: 1px solid ${palette.gray[5]};
+  background:none;
   padding-bottom: 0.5rem;
   outline: none;
   width: 100%;
   &:focus {
     color: $oc-teal-7;
-    border-bottom: 1px solid ${palette.gray[7]};
+    // border-bottom: 1px solid ${palette.gray[7]};
   }
   & + & {
     margin-top: 1rem;
@@ -97,10 +98,11 @@ const Comment = ({ form, onChange, onSubmit, error }) => {
           placeholder="댓글을 입력해주세요."
           onChange={onChange}
           value={form.body}
+          maxLength="100"
         />
     {error && <ErrorMessage>{error}</ErrorMessage>}
-        <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
-          등록
+        <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem', width: '20%' }}>
+          등록하기
         </ButtonWithMarginTop>
         </form>        
       </CommentFormBlock>
