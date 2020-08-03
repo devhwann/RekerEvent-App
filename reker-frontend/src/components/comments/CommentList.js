@@ -110,7 +110,6 @@ const CommentList = ({ comments, error, loading }) => {
   }
 
   return (
-    
     <CommentListBlock>
       <h2>댓글</h2>
       <p>여러분들의 의견을 남겨주세요!</p>

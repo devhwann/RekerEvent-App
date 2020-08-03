@@ -66,7 +66,7 @@ const EventSend = () => {
           - 구인시 엄청난 혜택 증정
           <br/>
        </EventContent>
-       <div style="">
+       <div >
        <EventBtnWrap>
         <Button to="/event" cyan style={eventbtn}>
           사전등록

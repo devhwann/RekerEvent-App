@@ -6,7 +6,6 @@ import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 // import queryString from 'query-string';
 
-
 const RegisterForm = ({ history,ua }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -17,7 +16,7 @@ const RegisterForm = ({ history,ua }) => {
     user: user.user,
   }));
 
-  // 인풋 변경 이벤트 핸들러
+  // 인풋 변경 이벤트 핸들
   const onChange = e => {
     const { value, name } = e.target;
     dispatch(
@@ -86,13 +85,13 @@ const RegisterForm = ({ history,ua }) => {
       dispatch(check());
     }
 
-    if (user) {
-      alert('이미 회원가입이 되어 있습니다.')	      
-    }
+    // if (user) {
+    //   alert('이미 회원가입이 되어 있습니다.')	      
+    // }
 
   }, [auth, authError, dispatch, user]);
 
-  // user 값이 잘 설정되었는지 확인
+  // user 값이 잘 설정되었는지 확인ㅌ 
   useEffect(() => {
     if (user) {
       history.push('/'); // 홈 화면으로 이동
