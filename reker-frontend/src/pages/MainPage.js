@@ -7,6 +7,8 @@ import HeaderContainer from '../containers/common/HeaderContainer';
 // import RegisterForm1 from '../containers/Auth1/RegisterForm1';
 import CommentForm from '../containers/Comment/CommentForm';
 import CommentList from '../containers/Comments/CommentListContainer';
+import PaginationContainer from '../containers/Comments/PaginationContainer';
+import CommentListPage from './CommentListPage';
 // import CommentList from '../components/comments/CommentList';
 // import AuthForm1 from '../components/Auth/AuthForm1';
 
@@ -24,8 +26,11 @@ const MainPage = () => {
           </div>
           <MainTab/>                    
       {/* <AuthForm1/> */}
-        <CommentList/>
+        {/* <CommentList/> */}
+      <CommentListPage/>
       <CommentForm/>
+      {/* <PaginationContainer /> */}
+
       {/* <RegisterForm/> */}
         </div>
       </div>

@@ -5,6 +5,7 @@ import palette from '../../styles/lib/palette';
 import Button from '../common/Button';
 import Axios from 'axios';
 import SubInfo from '../common/SubInfo';
+import CommentActionButtons from './CommentActionButtons';
 
 /**
  * 회원가입 또는 로그인 폼을 보여줍니다.
@@ -91,36 +92,43 @@ const ErrorMessage = styled.div`
 
 // `
 
-const CommentItem = ({ comment }) => {
+const CommentItem = ({ comment, actionButtons }) => {
   const { publishedDate, user, body, _id } = comment;
   return (
     <CommentCard>
       <p>
-        {user.username}
+        {user.username}{actionButtons} 
+
         <span> {new Date(publishedDate).toLocaleDateString()} </span>
       </p>
       <p>{body}</p>
+      
+      <p> </p>
     </CommentCard>
   );
 };
 
-const CommentList = ({ comments, error, loading }) => {
-  if (error) {
-    return <CommentListBlock>에러가 발생했습니다.</CommentListBlock>;
-  }
+const CommentList = ({ comments, error, loading, actionButtons, comment }) => {
+  const { publishedDate, user, body, _id } = comment;
+
+  // if (error) {
+  //   return <CommentListBlock>에러가 발생했습니다.</CommentListBlock>;
+  // }
 
   return (
     <CommentListBlock>
       <h2>댓글</h2>
       <p>여러분들의 의견을 남겨주세요!</p>
-       {!loading && comments && (
+       {/* {!loading && comments && (
         <CommentListFlex>
           {comments.map((comment) => (
             // <CommentItem comment={comment}  key={comment.comments}/>
             <CommentItem comment={comment} key={comment._id} />
+
           ))}
         </CommentListFlex>
-      )}
+      )} */}
+
       {/*  map of null 은 위의 loading 조건식이 필요함. */}
     </CommentListBlock>
     

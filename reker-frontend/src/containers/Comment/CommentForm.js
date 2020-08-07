@@ -36,6 +36,10 @@ const CommenForm = ({ history }) => {
       setError('빈 칸을 입력하세요.');
       return;
     }
+    if(!user) {
+      alert('로그인 후 댓글 등록이 가능합니다.')
+      return;
+    }
     
 
     dispatch(write({ body }));
@@ -47,9 +51,9 @@ const CommenForm = ({ history }) => {
     dispatch(initializeForm('comment'));
   }, [dispatch]);
 
-
     useEffect(() => {
     if (commentError) {
+  
       // 계정명이 이미 존재할 때
       
       // 기타 이유
@@ -57,13 +61,14 @@ const CommenForm = ({ history }) => {
       console.log('댓글 실패');
       return;
     }
-
+ 
+    
     if (comment) {
+      
       console.log(comment);
       window.location.reload(false);
-      // dispatch(check());
     }
-  }, [comment, commentError, dispatch, history]);
+  }, [comment, commentError, dispatch, history, user]);
 
   // user 값이 잘 설정되었는지 확인
   useEffect(() => {

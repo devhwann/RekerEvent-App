@@ -3,44 +3,28 @@ import qs from 'qs';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CommentList from '../../components/comments/CommentList';
+import CommentItem from '../../components/comments/CommentList';
 import { listComments } from '../../modules/comments';
-import Axios from 'axios';
+import CommentActionButtons from '../../components/comments/CommentActionButtons';
 
-const CommentListContainer = ({ location, match ,body, username }) => {
+const CommentListContainer = ({ location }) => {
   const dispatch = useDispatch();
-  // const { user } = useSelector(({ user }) => ({ user: user.user }));
 
-  const { comments, error, loading, user } = useSelector(
-    ({ comments, loading, user }) => ({
+  const { comments, comment, error, loading, user } = useSelector(
+    ({ comments, comment, loading, user }) => ({
       comments: comments.comments,
+      // comment: comment,comment,
       error: comments.error,
       loading: loading['comments/LIST_COMMNTS'],
       user: user.user,
     }),
   );
   useEffect(() => {
-    const { body, username } = qs.parse(location.search, {
-      // ignoreQueryPrefix: true,
+    const { body, username, page} = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
     });
-    dispatch(listComments({ body, username }));
-    }, [dispatch ]);
-
-// const fetchData = async () => {
-//   try {
-//     const response = await Axios.get(
-//       `http://localhost:4000/api/comment/`,
-//     );
-//     setComments(response.data.comments);
-//   } catch (e) {
-//     console.log(e);
-//   };
-// }
-// fetchData()
-
-// }, []);
-
-// const [data, setData, setComments ] = useState({ hits : []})
-
+    dispatch(listComments({ body, username, page }));
+    }, [dispatch,  location.search ]);
      
 
   return (
@@ -48,21 +32,11 @@ const CommentListContainer = ({ location, match ,body, username }) => {
       loading={loading}
       error={error}
       comments={comments}
+      // comemnt={comment}
       user={user}
+      // actionButtons={<CommentActionButtons />}
     />
   );
 };
 
 export default withRouter(CommentListContainer);
-// const fetchData = async () => {
-//   try {
-//     const response = await Axios.get(
-//       `http://localhost:4000/api/comment/`,
-//     );
-//     setComments(response.data.comments);
-//   } catch (e) {
-//     console.log(e);
-//   };
-// };
-// fetchData()
-// }, []);
