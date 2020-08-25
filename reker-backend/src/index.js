@@ -32,6 +32,10 @@ router.use('/api', api.routes()); // api 라우트 적용
 app.use(bodyParser());
 app.use(jwtMiddleware);
 
+app.use(async ctx => {
+  ctx.body = 'Hello World';
+});
+
 // app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
 

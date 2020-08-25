@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 import * as commentCtrl from './comment.ctrl';
-// import checkLoggedIn from '../../lib/checkLoggedIn';
+import checkLoggedIn from '../../lib/checkLoggedIn';
 
 
 const comment = new Router();
@@ -13,8 +13,8 @@ comment.get('/', commentCtrl.list)
 
 // const comment = new Router(); // /api/posts/:id
 // comments.get('/', commentsCtrl.read);
-// comments.delete('/', checkLoggedIn, commentsCtrl.checkOwnPost, commentsCtrl.remove);
-// comments.patch('/', checkLoggedIn, commentsCtrl.checkOwnPost, commentsCtrl.update);
+comment.delete('/', checkLoggedIn, commentCtrl.checkOwnComment, commentCtrl.remove);
+comment.patch('/', checkLoggedIn, commentCtrl.checkOwnComment, commentCtrl.update);
 
 // comments.use('/:id', commentsCtrl.getPostById, post.routes());
 

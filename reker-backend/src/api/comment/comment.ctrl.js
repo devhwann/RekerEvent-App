@@ -25,32 +25,15 @@ const { ObjectId } = mongoose.Types;
 //   }
 // };
 
-// export const checkOwncomment = (ctx, next) => {
-//   const { user, comment } = ctx.state;
-//   if (comment.user._id.toString() !== user._id) {
-//     ctx.status = 403;
-//     return;
-//   }
-//   return next();
-// };
-
-/*
-  comment /api/comment
-  {
-    title: '제목',
-    body: '내용',
+export const checkOwnComment = (ctx, next) => {
+  const { user, comment } = ctx.state;
+  if (comment.user._id.toString() !== user._id) {
+    ctx.status = 403;
+    return;
   }
-*/
-
-export const remove = async ctx => {
-  const { id } = ctx.params;
-  try {
-    await Comment.findByIdAndRemove(id).exec();
-    ctx.status = 204; // No Content (성공은 했지만 응답할 데이터는 없음)
-  } catch (e) {
-    ctx.throw(500, e);
-  }
+  return next();
 };
+
 
 export const write = async ctx => {
   const schema = Joi.object().keys({
@@ -82,15 +65,6 @@ export const write = async ctx => {
   }
 };
 
-// // html 을 없애고 내용이 너무 길으면 200자로 제한시키는 함수
-// // const removeHtmlAndShorten = body => {
-// //   const filtered = sanitizeHtml(body, {
-// //     allowedTags: [],
-// //   });
-// //   return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}...`;
-// // };
-
-
 
 /*
   GET /api/comment/:id
@@ -108,15 +82,6 @@ export const list = async ctx => {
     ctx.status = 400;
     return;
   }
-  
-  // const {  username } = ctx.query;
-  // // tag, username 값이 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
-  // const query = {
-  //   ...(username ? { 'user.username': username } : {}),
-  //   // ...(tag ? { tags: tag } : {}),
-  // };
-
-
   try {
   const comment = await Comment.find()
       .sort({ _id: -1 })
@@ -136,36 +101,20 @@ export const list = async ctx => {
 };
 
 
-// export const listComments = async ctx => {
 
-//   try {
-//   const comments = await Comment.find().exec();
-//   ctx.body = comments.map(comment => ({
-//           ...comment,
-//           body: removeHtmlAndShorten(comment.body),
-//         }));
-//   } catch (e) {
-//   return ctx.throw(500, e);    
-//   }
-// };
 
 /*
-  GET /api/comment/:id
+  DELETE /api/comment/:id
 */
-
-
-// /*
-//   DELETE /api/comment/:id
-// */
-// // export const remove = async ctx => {
-// //   const { id } = ctx.params;
-// //   try {
-// //     await comment.findByIdAndRemove(id).exec();
-// //     ctx.status = 204; // No Content (성공은 했지만 응답할 데이터는 없음)
-// //   } catch (e) {
-// //     ctx.throw(500, e);
-// //   }
-// // };
+export const remove = async ctx => {
+  const { id } = ctx.params;
+  try {
+    await Comment.findByIdAndRemove(id).exec();
+    ctx.status = 204; // No Content (성공은 했지만 응답할 데이터는 없음)
+  } catch (e) {
+    ctx.throw(500, e);
+  }
+};
 
 // /*
 //   PATCH /api/comment/:id
@@ -175,42 +124,41 @@ export const list = async ctx => {
 //     tags: ['수정', '태그']
 //   }
 // */
-// // export const update = async ctx => {
-// //   const { id } = ctx.params;
-// //   // write 에서 사용한 schema 와 비슷한데, required() 가 없습니다.
-// //   const schema = Joi.object().keys({
-// //     title: Joi.string(),
-// //     body: Joi.string(),
-// //     tags: Joi.array().items(Joi.string()),
-// //   });
+export const update = async ctx => {
+  const { id } = ctx.params;
+  // write 에서 사용한 schema 와 비슷한데, required() 가 없습니다.
+  const schema = Joi.object().keys({
+    body: Joi.string()
+  });
 
-// //   // 검증 후, 검증 실패시 에러처리
-// //   const result = Joi.validate(ctx.request.body, schema);
-// //   if (result.error) {
-// //     ctx.status = 400; // Bad Request
-// //     ctx.body = result.error;
-// //     return;
-// //   }
+  // 검증 후, 검증 실패시 에러처리
+  const result = Joi.validate(ctx.request.body, schema);
+  if (result.error) {
+    ctx.status = 400; // Bad Request
+    ctx.body = result.error;
+    return;
+  }
 
-// //   const nextData = { ...ctx.request.body }; // 객체를 복사하고
-// //   // body 값이 주어졌으면 HTML 필터링
-// //   if (nextData.body) {
-// //     nextData.body = sanitizeHtml(nextData.body);
-// //   }
-// //   try {
-// //     const comment = await comment.findByIdAndUpdate(id, nextData, {
-// //       new: true, // 이 값을 설정하면 업데이트된 데이터를 반환합니다.
-// //       // false 일 때에는 업데이트 되기 전의 데이터를 반환합니다.
-// //     }).exec();
-// //     if (!comment) {
-// //       ctx.status = 404;
-// //       return;
-// //     }
-// //     ctx.body = comment;
-// //   } catch (e) {
-// //     ctx.throw(500, e);
-// //   }
-// // };
+  const nextData = { ...ctx.request.body }; // 객체를 복사하고
+  // body 값이 주어졌으면 HTML 필터링
+  if (nextData.body) {
+    nextData.body = sanitizeHtml(nextData.body);
+  }
+  try {
+    const comment = await Comment.findByIdAndUpdate(id, nextData, {
+      new: true, // 이 값을 설정하면 업데이트된 데이터를 반환합니다.
+      // false 일 때에는 업데이트 되기 전의 데이터를 반환합니다.
+    }).exec();
+    if (!comment) {
+      ctx.status = 404;
+      return;
+    }
+    ctx.body = comment;
+  } catch (e) {
+    ctx.throw(500, e);
+  }
+};
+
 // html 을 없애고 내용이 너무 길으면 200자로 제한시키는 함수
 const removeHtmlAndShorten = body => {
   const filtered = sanitizeHtml(body, {
