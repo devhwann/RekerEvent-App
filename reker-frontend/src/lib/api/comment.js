@@ -4,7 +4,7 @@ import qs from 'qs'
 export const write = ({ body }) =>
   client.post('/api/comment/write', { body });
   
-  export const listComments = ({ page, username, body , }) => {
+  export const listComments =({ page, username, body  }) => {
     const queryString = qs.stringify({
       page,
       username,
@@ -14,10 +14,13 @@ export const write = ({ body }) =>
   };
 
   
-export const updatePost = ({ id, title, body  }) =>
-client.patch(`/api/posts/${id}`, {
-  title,
+export const updateComment = ({ id, body  }) =>
+client.patch(`/api/comment/${id}`, {
   body,
 });
 
-export const removeComment = id => client.delete(`/api/posts/${id}`);
+export const removeComment = id => client.delete(`/api/comment/${id}`);
+
+export const readComment = id => client.get(`/api/comment/${id}`);
+
+

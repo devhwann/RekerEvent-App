@@ -1,59 +1,79 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect , useState} from 'react';
+import palette from '../../styles/lib/palette';
+import Button from '../../components/common/Button';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import qs from 'qs';
 import { withRouter } from 'react-router-dom';
-// import { readComment, unloadComment } from '../../modules/comment';
-import CommentItem from '../../components/comments/CommentList';
+import { useDispatch, useSelector } from 'react-redux';
+// import CommentList from '../../components/comments/CommentList';
+import CommentItem from '../../components/comments/CommentView';
+import { listComments, } from '../../modules/comments';
 import CommentActionButtons from '../../components/comments/CommentActionButtons';
-// import { setOriginalComment } from '../../modules/comemnt';
-import { removeComment } from '../../lib/api/comment';
+import { setOriginalComment  } from '../../modules/comment';
+import {  readComment, unloadComment  } from '../../modules/read';
+import { removeComment} from '../../lib/api/comment'; 
+import CommentViewer from '../../components/comments/CommentView';
 
-const CommentItemContainer = ({ match, history }) => {
-  // 처음 마운트될 때 포스트 읽기 API 요청
-  const { commentId } = match.params;
+
+const CommentListContainer = ({ location, history, match }) => {
+
+
+  const { commentId} = match.params;
   const dispatch = useDispatch();
-  const { comment, error, loading, user } = useSelector(
-    ({ comment, loading, user }) => ({
-      comment: comment.comment,
-      error: comment.error,
-      loading: loading['comment/READ_COMMENT'],
+  const { comments, comment, error, loading, user } = useSelector(
+    ({ comments, comment, loading, user }) => ({
+      comments: comments.comments,
+      // comment: comment,comment,
+      error: comments.error,
+      loading: loading['comments/LIST_COMMNTS'],
       user: user.user,
     }),
   );
-
   useEffect(() => {
-    // dispatch(readComment(commentId));
-    // 언마운트될 때 리덕스에서 포스트 데이터 없애기
+    dispatch(readComment(commentId))     
+    const { body, username, page} = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+
+    dispatch(listComments({ body, username, page }));
+
     return () => {
-      // dispatch(unloadComment());
+      dispatch(unloadComment());
     };
-  }, [dispatch, commentId]);
+    }, [dispatch,  location.search ,commentId]);
+    
 
-  const onEdit = () => {
-    // dispatch(setOriginalComment(comment));
-    history.push('/write');
-  };
-
-  const onRemove = async () => {
-    try {
-      await removeComment(commentId);
-      history.push('/'); // 홈으로 이동
-    } catch (e) {
-      console.log(e);
+    const onEdit = () => {
+      dispatch(setOriginalComment(comment));
+      history.push('/write');
     }
-  };
 
-  const ownComment = (user && user._id) === (comment && comment.user._id);
+    const onRemove = async () => {
+      try {
+        await removeComment(commentId);
+        history.push('/'); // 홈으로 이동
+      } catch (e) {
+        console.log(e);
+      }
+    };
+     
+
+const ownComment = (user && user._id) === (comment && comment.user._id)
 
   return (
-    <CommentItem
-      comment={comment}
+    <CommentViewer
+    comment={comment}
       loading={loading}
       error={error}
+      comments={comments}
+      user={user}
       actionButtons={
-        ownComment && <CommentActionButtons onEdit={onEdit} onRemove={onRemove} />
+        ownComment  &&    <CommentActionButtons onEdit={onEdit} onRemove={onRemove} />
       }
     />
+    
   );
 };
 
-export default withRouter(CommentItemContainer);
+export default withRouter(CommentListContainer);

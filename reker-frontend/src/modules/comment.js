@@ -13,6 +13,13 @@ const [WRITE, WRITE_SUCCESS, WRITE_FAILURE] = createRequestActionTypes(
   'comment/WRITE',
 );
 
+const SET_ORIGINAL_COMMENT = 'comment/SET_ORIGINAL_COMMENT';
+const [
+  UPDATE_COMMENT,
+  UPDATE_COMMENT_SUCCESS,
+  UPDATE_COMMENT_FAILURE,
+] = createRequestActionTypes('comment/UPDATE_COMMENT'); // 포스트 수정
+
 export const changeField = createAction(
   CHANGE_FIELD,
   ({ form, key, value }) => ({
@@ -25,14 +32,23 @@ export const initializeForm = createAction(INITIALIZE_FORM, form => form); // wr
 export const write = createAction(WRITE, ({body}) => ({
   body
 }));
+export const setOriginalComment = createAction(SET_ORIGINAL_COMMENT, comemnt => comemnt);
+export const updateComment = createAction(
+  UPDATE_COMMENT,
+  ({body}) => ({
+    body
+  }),
+);
 
 
 
 // saga 생성
 const writeSaga = createRequestSaga(WRITE, commentAPI.write);
+const updateCommentSaga = createRequestSaga(UPDATE_COMMENT, commentAPI.updateComment);
 
 export function* commentSaga() {
   yield takeLatest(WRITE, writeSaga);
+  yield takeLatest(UPDATE_COMMENT, updateCommentSaga);
 }
 
 const initialState = {
@@ -40,8 +56,9 @@ const initialState = {
     body: '',
   },
   comment: null,
-  event: null,
+  // event: null,
   commentError: null,
+  originalCommentId: null
 };
 
 const comment = handleActions(
@@ -65,6 +82,19 @@ const comment = handleActions(
     [WRITE_FAILURE]: (state, { payload: error }) => ({
       ...state,
       commentError: error,
+    }),
+    [SET_ORIGINAL_COMMENT]: (state, { payload: comment }) => ({
+      ...state,
+      body: comment.body,
+      originalCommentId: comment._id,
+    }),
+    [UPDATE_COMMENT_SUCCESS]: (state, { payload: comment }) => ({
+      ...state,
+      comment,
+    }),
+    [UPDATE_COMMENT_FAILURE]: (state, { payload: commentError }) => ({
+      ...state,
+      commentError,
     }),
   },
   initialState,

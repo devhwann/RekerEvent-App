@@ -8,7 +8,7 @@ import rePage from './pages/rePage';
 import AuthFomr1 from './components/AuthFomr1';
 import CertificationResult from './components/CertificationResult';
 import AuthForm from './components/Auth/AuthForm';
-
+import CommentPage from './pages/CommentPage';
 // import './App.css';
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
       <Route exact path="/AuthFomr1" component={AuthFomr1} /> 
       <Route exact path="/AuthForm" component={AuthForm} /> 
       <Route exact path="/certification/result" component={CertificationResult} />
-      
+      <Route component={CommentPage} path="/@:username/:commentId" />
     </>
   );
 };

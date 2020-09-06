@@ -96,42 +96,41 @@ const CommentItem = ({ comment, actionButtons }) => {
   const { publishedDate, user, body, _id } = comment;
   return (
     <CommentCard>
-      <p>
-        {user.username}{actionButtons} 
-
-        <span> {new Date(publishedDate).toLocaleDateString()} </span>
+      <p>        
+        <Link to={`/@${user.username}/${_id}`}>{user.username}</Link>
+        <span> {actionButtons}  {new Date(publishedDate).toLocaleDateString()} </span>
       </p>
-      <p>{body}</p>
+      <p>
+      <Link to={`/@${user.username}/${_id}`}>{body}</Link>
+        
+        </p>
       
-      <p> </p>
+      
     </CommentCard>
   );
 };
 
-const CommentList = ({ comments, error, loading, actionButtons, comment }) => {
-  const { publishedDate, user, body, _id } = comment;
+const CommentList = ({ comments, error, loading,  comment }) => {
 
-  // if (error) {
-  //   return <CommentListBlock>에러가 발생했습니다.</CommentListBlock>;
-  // }
+  if (error) {
+    return <CommentListBlock>에러가 발생했습니다.</CommentListBlock>;
+  }
 
   return (
     <CommentListBlock>
       <h2>댓글</h2>
       <p>여러분들의 의견을 남겨주세요!</p>
-       {/* {!loading && comments && (
+       {!loading && comments && (
         <CommentListFlex>
           {comments.map((comment) => (
             // <CommentItem comment={comment}  key={comment.comments}/>
-            <CommentItem comment={comment} key={comment._id} />
-
+            <CommentItem comment={comment} key={comment._id} actionButtons={<CommentActionButtons  /> }  />
           ))}
         </CommentListFlex>
-      )} */}
-
+      )}
+{/* {actionButtons} */}
       {/*  map of null 은 위의 loading 조건식이 필요함. */}
     </CommentListBlock>
-    
   );
 };
 
