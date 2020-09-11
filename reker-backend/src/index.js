@@ -36,6 +36,8 @@ app.use(async ctx => {
   ctx.body = 'Hello World';
 });
 
+
+
 // app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
 
