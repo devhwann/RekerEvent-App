@@ -42,15 +42,22 @@ const SocialShareWrap = styled.div`{
 
 }`
 
+const IconWrap = styled.div`{
+  @media only screen and (max-width: 600Px) {
+    display:none;
+  }
+}`
 
 
 const SocialShare = () => {
   return (
     <SocialShareWrap>
       <p >Reker의 소셜 네트워크 입니다. 여러분들과 소통과 의견에 귀 기울이고 있습니다.</p>
-      <FontAwesomeIcon icon={faInstagram}/>&nbsp; : &nbsp;Instagram
-      <br/>
-      <FontAwesomeIcon icon={faFacebook}/>&nbsp; : &nbsp;Facebook      
+      <IconWrap>
+        <FontAwesomeIcon icon={faInstagram}/>&nbsp; : &nbsp;Instagram
+        <br/>
+        <FontAwesomeIcon icon={faFacebook}/>&nbsp; : &nbsp;Facebook      
+      </IconWrap>
       <br/>
       {/* <FontAwesomeIcon icon={faBlog}/>&nbsp; : &nbsp; Blog       */}
       <EventBtnWrap>

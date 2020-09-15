@@ -4,13 +4,18 @@ import qs from 'qs';
 import Button from '../common/Button';
 
 const PaginationBlock = styled.div`
-  width: 320px;
+  // width: 320px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 3rem;
 `;
-const PageNumber = styled.div``;
+const PageNumber = styled.div`
+
+@media only screen and (max-width: 600Px) {
+  display: none;
+}
+`;
 
 const buildLink = ({ username,body,  page }) => {
   const query = qs.stringify({  page , body ,username });

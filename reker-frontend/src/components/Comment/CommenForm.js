@@ -67,12 +67,15 @@ const Footer = styled.div`
 
 const ButtonWithMarginTop = styled(Button)`
   margin-top: 1rem;
+  width:15%;
+
+  
+
+  @media only screen and (max-width: 1024Px) {
+    width:40%;
+  }
+  
 `;
-
-const textMap = {
-  event: '사전등록',
-};
-
 
 
 /**
@@ -84,6 +87,8 @@ const ErrorMessage = styled.div`
   font-size: 0.875rem;
   margin-top: 1rem;
 `;
+
+
 
   
 
@@ -101,7 +106,7 @@ const Comment = ({ form, onChange, onSubmit, error }) => {
           maxLength="100"
         />
     {error && <ErrorMessage>{error}</ErrorMessage>}
-        <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem', width: '20%' }}>
+        <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem'}}>
           등록하기
         </ButtonWithMarginTop>
         </form>        
