@@ -38,7 +38,7 @@ const EventBtnWrap = styled.div`{
 const SocialShareWrap = styled.div`{
     width:100%;
     position: relative;
-    hegight:250px;
+    hegight:250px;a
 
 }`
 
