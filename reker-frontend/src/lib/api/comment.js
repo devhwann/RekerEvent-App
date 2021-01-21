@@ -19,7 +19,7 @@ client.patch(`/api/comment/${id}`, {
   body,
 });
 
-export const removeComment = id => client.delete(`/api/comment/${id}`);
+export const removeComment = id => client.delete(`/api/${id}`);
 
 export const readComment = id => client.get(`/api/comment/${id}`);
 

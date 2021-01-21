@@ -52,7 +52,7 @@ export const write = async ctx => {
     return;
   }
 
-  const { body } = ctx.request.body;
+  const { body,  } = ctx.request.body;
   const comment = new Comment({
     body,
     user: ctx.state.user,

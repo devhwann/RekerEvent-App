@@ -93,6 +93,7 @@ const ErrorMessage = styled.div`
 // `
 
 const CommentItem = ({ comment, actionButtons }) => {
+  
   const { publishedDate, user, body, _id } = comment;
   return (
     <CommentCard>
@@ -110,11 +111,12 @@ const CommentItem = ({ comment, actionButtons }) => {
   );
 };
 
-const CommentList = ({ comments, error, loading,  comment }) => {
+const CommentList = ({ comments, error, loading,  comment, actionButtons,user}) => {
 
   if (error) {
     return <CommentListBlock>에러가 발생했습니다.</CommentListBlock>;
   }
+  const ownComment = user && user._id 
 
   return (
     <CommentListBlock>
@@ -124,11 +126,14 @@ const CommentList = ({ comments, error, loading,  comment }) => {
         <CommentListFlex>
           {comments.map((comment) => (
             // <CommentItem comment={comment}  key={comment.comments}/>
-            <CommentItem comment={comment} key={comment._id} actionButtons={<CommentActionButtons  /> }  />
+            <CommentItem comment={comment} key={comment._id}    />
           ))}
         </CommentListFlex>
       )}
-{/* {actionButtons} */}
+      <div>
+{actionButtons}
+
+      </div>
       {/*  map of null 은 위의 loading 조건식이 필요함. */}
     </CommentListBlock>
   );

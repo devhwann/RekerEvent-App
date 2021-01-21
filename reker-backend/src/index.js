@@ -6,7 +6,6 @@ import mongoose from 'mongoose';
 import serve from 'koa-static';
 import path from 'path';
 import send from 'koa-send';
-
 import api from './api';
 import jwtMiddleware from './lib/jwtMiddleware';
 
@@ -32,9 +31,9 @@ router.use('/api', api.routes()); // api 라우트 적용
 app.use(bodyParser());
 app.use(jwtMiddleware);
 
-app.use(async ctx => {
-  ctx.body = 'Hello World';
-});
+// app.use(async ctx => {
+//   ctx.body = 'Hello World';
+// });
 
 
 

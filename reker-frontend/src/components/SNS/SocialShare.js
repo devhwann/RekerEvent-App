@@ -4,7 +4,8 @@ import Button from '../common/Button';
 import styled from 'styled-components';
 import classNames from "classnames/bind";
 import styles from '../../styles/MainPage.scss';
-import {  faFacebook, faInstagram, } from '@fortawesome/free-brands-svg-icons';
+import {  faFacebook, faInstagram, faYoutube, } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -54,9 +55,11 @@ const SocialShare = () => {
     <SocialShareWrap>
       <p >Reker의 소셜 네트워크 입니다. 여러분들과 소통과 의견에 귀 기울이고 있습니다.</p>
       <IconWrap>
-        <FontAwesomeIcon icon={faInstagram}/>&nbsp; : &nbsp;Instagram
+        <FontAwesomeIcon icon={faInstagram}/>&nbsp; : &nbsp; <a href="https://www.instagram.com/rekerinternational/">Instagram </a>
         <br/>
-        <FontAwesomeIcon icon={faFacebook}/>&nbsp; : &nbsp;Facebook      
+        <FontAwesomeIcon icon={faFacebook}/>&nbsp; : &nbsp;<a href="https://www.facebook.com/Rekerinc"> Facebook </a>
+        <br/>
+        <FontAwesomeIcon icon={faYoutube}/>&nbsp;: &nbsp; &nbsp; <a href="https://www.youtube.com/watch?v=AK0p2T96-Yw&ab_channel=Reker">Youtube</a>   
       </IconWrap>
       <br/>
       {/* <FontAwesomeIcon icon={faBlog}/>&nbsp; : &nbsp; Blog       */}
