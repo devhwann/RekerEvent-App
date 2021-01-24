@@ -16,10 +16,10 @@ const eventbtn = {
 };
 
 
-const magin0 = {
-   margin: "0rem"
+// const magin0 = {
+//    margin: "0rem"
   
-};
+// };
 
 const EventBtnWrap = styled.div`{
 
