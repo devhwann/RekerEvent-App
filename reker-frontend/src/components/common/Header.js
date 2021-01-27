@@ -51,6 +51,10 @@ const UserInfo = styled.div`
   margin-right: 1rem;
 `;
 
+const evtClick = () => {
+  alert('준비중입니다.');
+}
+
 const Header = ({ user, onLogout }) => {
   return (
     <>
@@ -66,7 +70,7 @@ const Header = ({ user, onLogout }) => {
             </div>
           ) : (
             <div className="right">
-              <Button to="/login" cyan>로그인</Button>
+              <Button to="/" cyan onClick={evtClick}>로그인</Button>
             </div>
           )}
         </Wrapper>

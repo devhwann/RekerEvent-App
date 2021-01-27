@@ -25,8 +25,8 @@ const MainPage = () => {
           <MainTab/>                    
       {/* <AuthForm1/> */}
         {/* <CommentList/> */}
-      <CommentListPage/>
-      <CommentForm/>
+      {/* <CommentListPage/> */}
+      {/* <CommentForm/> */}
       {/* <PaginationContainer /> */}
 
       {/* <RegisterForm/> */}

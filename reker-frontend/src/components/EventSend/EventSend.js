@@ -48,8 +48,9 @@ const EventSendWrap = styled.div`{
 
 }`
 
-
-
+const evtClick = () => {
+  alert('준비중입니다.');
+}
 
 const EventSend = () => {
   return (
@@ -68,7 +69,7 @@ const EventSend = () => {
        </EventContent>
        <div >
        <EventBtnWrap>
-        <Button to="/event" cyan style={eventbtn}>
+        <Button to="/" cyan style={eventbtn} onClick={evtClick}>
           사전등록
         </Button>                
         </EventBtnWrap>

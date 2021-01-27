@@ -49,6 +49,9 @@ const IconWrap = styled.div`{
   }
 }`
 
+const evtClick = () => {
+  alert('준비중입니다.');
+}
 
 const SocialShare = () => {
   return (
@@ -64,7 +67,7 @@ const SocialShare = () => {
       <br/>
       {/* <FontAwesomeIcon icon={faBlog}/>&nbsp; : &nbsp; Blog       */}
       <EventBtnWrap>
-      <Button to="/register" cyan className={cx('btn-displayB')} style={eventbtn}>
+      <Button to="/" cyan className={cx('btn-displayB')} style={eventbtn} onClick={evtClick}>
           회원가입
         </Button>
     </EventBtnWrap>
