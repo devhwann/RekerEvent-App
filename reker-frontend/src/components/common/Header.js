@@ -24,19 +24,18 @@ const Wrapper = styled(Responsive)`
     font-size: 1.125rem;
     font-weight: 800;
     letter-spacing: 2px;
-    color:#0f43ff;
+    color: #0f43ff;
   }
   .right {
     display: flex;
     align-items: center;
   }
 
-  @media only screen and (max-width: 600Px) {
+  @media only screen and (max-width: 600px) {
     img {
-       width: 100px;
-      }
+      width: 100px;
+    }
   }
-
 `;
 
 /**
@@ -52,8 +51,8 @@ const UserInfo = styled.div`
 `;
 
 const evtClick = () => {
-  alert('준비중입니다.');
-}
+  alert('사전등록이 종료 되었습니다.');
+};
 
 const Header = ({ user, onLogout }) => {
   return (
@@ -61,7 +60,7 @@ const Header = ({ user, onLogout }) => {
       <HeaderBlock>
         <Wrapper>
           <Link to="/" className="logo">
-            <img src="brand-logo.jpg" alt="" width="150px"/>
+            <img src="brand-logo.jpg" alt="" width="150px" />
           </Link>
           {user ? (
             <div className="right">
@@ -70,7 +69,9 @@ const Header = ({ user, onLogout }) => {
             </div>
           ) : (
             <div className="right">
-              <Button to="/" cyan onClick={evtClick}>로그인</Button>
+              <Button to="/" cyan onClick={evtClick}>
+                로그인
+              </Button>
             </div>
           )}
         </Wrapper>
